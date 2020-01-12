@@ -1,13 +1,16 @@
-// @flow
-import React, { Component } from 'react';
-import Home from '../components/Home';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as PostActions from '../actions/posts';
+import App from './App/App';
 
-type Props = {};
-
-export default class HomePage extends Component<Props> {
-  props: Props;
-
-  render() {
-    return <Home />;
-  }
+function mapStateToProps(state) {
+  return {
+    posts: state.posts
+  };
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(PostActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

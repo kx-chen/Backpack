@@ -1,20 +1,27 @@
-// @flow
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import routes from '../constants/routes.json';
-import styles from './Home.css';
-
-type Props = {};
-
-export default class Home extends Component<Props> {
-  props: Props;
-
-  render() {
-    return (
-      <div className={styles.container} data-tid="container">
-        <h2>Home</h2>
-        <Link to={routes.COUNTER}>to Counter</Link>
-      </div>
-    );
-  }
-}
+// // @flow
+// import React, { Component } from 'react';
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+// import styles from '../containers/App/App.css';
+//
+// type Props = {};
+//
+// export default class Home extends Component<Props> {
+//   props: Props;
+//
+//   render() {
+//     return (
+//       <div>
+//         <Container fluid>
+//           <Row>
+//             {/* TODO: DRY */}
+//             <Col className={styles.col}>Subreddits</Col>
+//             <Col className={styles.col}>Posts</Col>
+//             <Col className={styles.col}>Post content</Col>
+//           </Row>
+//         </Container>
+//       </div>
+//     );
+//   }
+// }
