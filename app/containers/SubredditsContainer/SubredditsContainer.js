@@ -8,44 +8,37 @@ import * as PostActions from '../../actions/posts';
 
 type Props = {
   dispatch: () => void,
-  // TODO: change
-  subreddits: []
+  subreddits: array
 };
 
 class SubredditsContainer extends Component<Props> {
   props: Props;
 
   componentDidMount() {
-    // eslint-disable-next-line react/destructuring-assignment
-    this.props.dispatch(PostActions.fetchSubreddits());
+    const { dispatch } = this.props;
+    dispatch(PostActions.fetchSubreddits());
   }
 
   render() {
     const { subreddits, dispatch } = this.props;
-    console.log('subredditscontainer props', this.props);
 
     const listItems = subreddits.map((subreddit, id) => (
       <ListGroup.Item
         onClick={() => dispatch(PostActions.subredditSelected(id))}
         action
+        key={`subreddit-${id}`}
       >
         {subreddit.name}
       </ListGroup.Item>
     ));
 
-    return (
-      <Col className={styles.col}>
-        Subreddits lol
-        {listItems}
-      </Col>
-    );
+    return <Col className={styles.col}>{listItems}</Col>;
   }
 }
 
 function mapStateToProps(state) {
-  console.log('subredditscontainer', state);
   return {
-    subreddits: state.postData.subreddits
+    subreddits: state.postData.subreddits,
   };
 }
 

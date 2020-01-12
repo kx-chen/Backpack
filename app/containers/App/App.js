@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import SubredditsContainer from '../SubredditsContainer/SubredditsContainer';
 import PostContainer from '../PostContainer/PostContainer';
 import Post from '../../components/Post/Post';
+import styles from './App.css';
 
 type Props = {};
 
@@ -12,11 +13,10 @@ export default class App extends Component<Props> {
   props: Props;
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <Container fluid>
-          <Row>
+          <Row className={styles.row}>
             {/* TODO: DRY */}
             {/* TODO: Rename to *Column? */}
             <SubredditsContainer />

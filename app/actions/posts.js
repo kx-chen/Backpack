@@ -1,15 +1,21 @@
-// @flow
-// import type { GetState, Dispatch } from '../reducers/types';
+import call from './reddit';
 
-export const LOAD_POST = 'LOAD_POST';
+export const LOAD_POST_SUCCESS = 'LOAD_POST_SUCCESS';
 export const SELECT_POST = 'SELECT_POST';
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
 export const LOAD_SUBREDDITS = 'LOAD_SUBREDDITS';
+export const LOAD_POST_START = 'LOAD_POST_START';
 
 export function loadPostSuccess(posts) {
   return {
-    type: LOAD_POST,
+    type: LOAD_POST_SUCCESS,
     posts
+  };
+}
+
+export function loadPostsStart() {
+  return {
+    type: LOAD_POST_START
   };
 }
 
@@ -23,8 +29,7 @@ export function loadSubredditsSuccess(subreddits) {
 export function postSelected(post) {
   return {
     type: SELECT_POST,
-    title: post.title,
-    karma: post.karma
+    id: post
   };
 }
 
@@ -44,51 +49,41 @@ export function fetchSubreddits() {
 
 export function fetchSubredditPosts() {
   return dispatch => {
-    dispatch(loadPostSuccess(getAllPosts()));
+    dispatch(loadPostsStart());
+
+    getAllPosts()
+      .then(res => {
+        dispatch(loadPostSuccess(res));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 }
 
 export function fetchPostById(id) {
-  const post = getAllPosts()[id];
   return dispatch => {
-    dispatch(postSelected(post));
+    dispatch(postSelected(id));
   };
 }
 
 function getAllPosts() {
-  return [
-    {
-      title: 'First title',
-      karma: '39'
-    },
-    {
-      title: 'Second title',
-      karma: '39'
-    },
-    {
-      title: 'Third title',
-      karma: '39'
-    },
-    {
-      title: 'Fourth title',
-      karma: '39'
-    }
-  ];
+  return call();
 }
 
 function getAllSubreddits() {
   return [
     {
-      name: 'First subreddit',
+      name: 'Front Page'
     },
     {
-      name: 'Second subreddit',
+      name: 'r/AskReddit'
     },
     {
-      name: 'Third subreddit',
+      name: 'r/gtaonline'
     },
     {
-      name: 'Fourth subreddit',
+      name: '/r/vancouver'
     }
   ];
 }

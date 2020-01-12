@@ -8,32 +8,49 @@ import * as PostActions from '../../actions/posts';
 
 type Props = {
   posts: [],
-  dispatch: () => void
+  dispatch: () => void,
+  loading: boolean
 };
 
 class PostContainer extends Component<Props> {
   props: Props;
 
   componentDidMount() {
-    // eslint-disable-next-line react/destructuring-assignment
-    this.props.dispatch(PostActions.fetchSubredditPosts());
+    const { dispatch } = this.props;
+    dispatch(PostActions.fetchSubredditPosts());
   }
 
-  render() {
+  generatePostList() {
     const { posts, dispatch } = this.props;
+
     const listItems = posts.posts.map((post, id) => (
       <ListGroup.Item
         onClick={() => dispatch(PostActions.fetchPostById(id))}
         action
+        key={`post-${id}`}
       >
-        <p>{post.title}</p>
-        <p>{post.karma}</p>
+        {post.title} <br />
+        {post.karma}
       </ListGroup.Item>
     ));
+    return listItems;
+  }
+
+  render() {
+    const { loading } = this.props;
+
+    if (loading) {
+      return (
+        <Col className={styles.col}>
+          <p>Loading...</p>
+        </Col>
+      );
+    }
+    const postElements = this.generatePostList();
 
     return (
       <Col className={styles.col}>
-        <ListGroup>{listItems}</ListGroup>
+        <ListGroup>{postElements}</ListGroup>
       </Col>
     );
   }
@@ -41,7 +58,8 @@ class PostContainer extends Component<Props> {
 
 function mapStateToProps(state) {
   return {
-    posts: state.postData
+    posts: state.postData,
+    loading: state.postData.loading
   };
 }
 

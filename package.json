@@ -1,6 +1,6 @@
 {
   "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
+  "productName": "Reddit Offline Desktop",
   "version": "0.18.1",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "scripts": {
@@ -56,7 +56,7 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
+    "productName": "Reddit Offline Desktop",
     "appId": "org.develar.ElectronReact",
     "files": [
       "dist/",
@@ -279,6 +279,7 @@
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
+    "request": "^2.88.0",
     "source-map-support": "^0.5.16"
   },
   "devEngines": {

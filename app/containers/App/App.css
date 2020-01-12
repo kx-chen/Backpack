@@ -1,3 +1,7 @@
 .col {
   border: 0.3px gray solid;
 }
+
+.row {
+  overflow: scroll;
+}

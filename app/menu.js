@@ -45,10 +45,10 @@ export default class MenuBuilder {
 
   buildDarwinTemplate() {
     const subMenuAbout = {
-      label: 'Electron',
+      label: 'Reddit Offline Desktop',
       submenu: [
         {
-          label: 'About ElectronReact',
+          label: 'About Reddit Offline Desktop',
           selector: 'orderFrontStandardAboutPanel:'
         },
         { type: 'separator' },

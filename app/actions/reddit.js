@@ -7,9 +7,9 @@ const file = 'frontpage.json';
 let collection = [];
 
 function writeFile(file, json) {
-  fs.writeFile(file, json, err => {
+  fs.writeFileSync(file, json, err => {
     if (err) {
-      console.error(error);
+      console.error(err);
       return;
     }
     console.log('Front page exists locally now.');
@@ -49,20 +49,28 @@ function promiseReadFile(file) {
   return new Promise(resolve => {
     fs.readFile(file, 'utf-8', function(err, data) {
       if (err) {
-        console.error(error);
+        console.error(err);
       }
       resolve(data);
     });
   });
 }
 
-request(url, function(error, response, body) {
-  // Pulls json file from Reddit and writes it locally
-  writeFile(file, body);
-});
+function call() {
+  return new Promise(resolve => {
+    request(url, function(error, response, body) {
+      // Pulls json file from Reddit and writes it locally
+      writeFile(file, body);
 
-jsonReady(file) // Processes json file into relevant info that will be used
-  .then(collectionOfInfo => {
-    collection = collectionOfInfo;
-    console.log(collection);
+      jsonReady(file) // Processes json file into relevant info that will be used
+        .then(collectionOfInfo => {
+          collection = collectionOfInfo;
+          resolve(collection);
+          console.log(collection);
+        })
+        .catch(err => console.log(err));
+    });
   });
+}
+
+export default call;
