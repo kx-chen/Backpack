@@ -2,39 +2,50 @@
 import React, { Component } from 'react';
 import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
+import ListGroup from 'react-bootstrap/ListGroup';
 import styles from '../App/App.css';
-import ListGroup from "react-bootstrap/ListGroup";
-import * as PostActions from "../../actions/posts";
+import * as PostActions from '../../actions/posts';
 
-type Props = {};
+type Props = {
+  dispatch: () => void,
+  // TODO: change
+  subreddits: []
+};
 
 class SubredditsContainer extends Component<Props> {
   props: Props;
 
+  componentDidMount() {
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.dispatch(PostActions.fetchSubreddits());
+  }
+
   render() {
-    const listItems = posts.posts.map((post, id) => (
+    const { subreddits, dispatch } = this.props;
+    console.log('subredditscontainer props', this.props);
+
+    const listItems = subreddits.map((subreddit, id) => (
       <ListGroup.Item
-        onClick={() => dispatch(PostActions.fetchPostById(id))}
+        onClick={() => dispatch(PostActions.subredditSelected(id))}
         action
       >
-        <p>{post.title}</p>
-        <p>{post.karma}</p>
+        {subreddit.name}
       </ListGroup.Item>
     ));
 
     return (
       <Col className={styles.col}>
         Subreddits lol
-
+        {listItems}
       </Col>
     );
   }
 }
 
-
 function mapStateToProps(state) {
+  console.log('subredditscontainer', state);
   return {
-    posts: state.posts
+    subreddits: state.postData.subreddits
   };
 }
 
