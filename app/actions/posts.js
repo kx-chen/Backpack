@@ -1,5 +1,3 @@
-import call from './reddit';
-
 export const LOAD_POST_SUCCESS = 'LOAD_POST_SUCCESS';
 export const SELECT_POST = 'SELECT_POST';
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
@@ -52,9 +50,7 @@ export function fetchSubredditPosts() {
     dispatch(loadPostsStart());
 
     getAllPosts()
-      .then(res => {
-        dispatch(loadPostSuccess(res));
-      })
+      .then(res => dispatch(loadPostSuccess(res)))
       .catch(err => {
         console.log(err);
       });
@@ -68,7 +64,7 @@ export function fetchPostById(id) {
 }
 
 function getAllPosts() {
-  return call();
+  // return call();
 }
 
 function getAllSubreddits() {

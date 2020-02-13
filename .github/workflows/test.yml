@@ -27,8 +27,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          yarn package-ci
           yarn lint
-          yarn flow
-          yarn build-e2e
-          yarn test-e2e
+#          yarn package-ci
+#          yarn flow
+#          yarn build-e2e
+#          yarn test-e2e
