@@ -20,7 +20,6 @@ class Posts extends Component<Props> {
       <ListGroup.Item
         onClick={() => dispatch(PostActions.fetchPostById(id))}
         action
-        key={`post-${id}`}
       >
         {post.title} <br />
         {post.karma}

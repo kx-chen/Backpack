@@ -28,7 +28,7 @@ class PostContainer extends Component<Props> {
   render() {
     const { posts, dispatch, loading } = this.props;
     // TODO: check if this is the correct of passing
-    return <Posts posts={posts} dispatch={dispatch} loading={loading}/>
+    return <Posts posts={posts} dispatch={dispatch} loading={loading} />;
   }
 }
 

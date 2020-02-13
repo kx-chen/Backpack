@@ -52,9 +52,7 @@ export function fetchSubredditPosts() {
     dispatch(loadPostsStart());
 
     getAllPosts()
-      .then(res => {
-        dispatch(loadPostSuccess(res));
-      })
+      .then(res => dispatch(loadPostSuccess(res)))
       .catch(err => {
         console.log(err);
       });

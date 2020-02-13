@@ -24,7 +24,6 @@ export default class Subreddits extends Component<Props> {
       <ListGroup.Item
         onClick={() => dispatch(PostActions.subredditSelected(id))}
         action
-        key={`subreddit-${id}`}
       >
         {subreddit.name}
       </ListGroup.Item>
