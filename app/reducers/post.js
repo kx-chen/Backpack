@@ -3,13 +3,14 @@ import {
   LOAD_POST_START,
   LOAD_POST_SUCCESS,
   LOAD_SUBREDDITS,
-  SELECT_POST
+  SELECT_POST, SELECT_SUBREDDIT
 } from '../actions/posts';
 
 const initialState = {
   posts: [],
   subreddits: [],
-  loading: true
+  loading: true,
+  name: 'AskReddit'
 };
 
 export default function posts(state = initialState, action) {
@@ -36,6 +37,11 @@ export default function posts(state = initialState, action) {
         ...state,
         subreddits: action.subreddits,
         loading: false
+      };
+    case SELECT_SUBREDDIT:
+      return {
+        ...state,
+        name: action.name
       };
     default:
       return state;

@@ -18,6 +18,7 @@ export function loadPostsStart() {
 }
 
 export function loadSubredditsSuccess(subreddits) {
+  console.log('loadSubredditSuccess');
   return {
     type: LOAD_SUBREDDITS,
     subreddits
@@ -32,6 +33,7 @@ export function postSelected(post) {
 }
 
 export function subredditSelected(subreddit) {
+  console.log('subreddit selected', subreddit);
   return {
     type: SELECT_SUBREDDIT,
     name: subreddit.name
@@ -39,21 +41,24 @@ export function subredditSelected(subreddit) {
 }
 
 export function fetchSubreddits() {
+  console.log('fetchSubreddits');
   const subreddits = getAllSubreddits();
   return dispatch => {
     dispatch(loadSubredditsSuccess(subreddits));
   };
 }
 
-export function fetchSubredditPosts() {
+export function fetchSubredditPosts(subreddit) {
+  console.log('fetchSubredditPosts');
   return dispatch => {
     dispatch(loadPostsStart());
 
-    getAllPosts()
-      .then(res => dispatch(loadPostSuccess(res)))
-      .catch(err => {
-        console.log(err);
-      });
+    return (
+      fetch(`https://www.reddit.com/r/${subreddit}.json`)
+        .then(response => response.json())
+        // TODO: map the json to object
+        .then(json => dispatch(loadPostSuccess(json)))
+    );
   };
 }
 
@@ -70,16 +75,16 @@ function getAllPosts() {
 function getAllSubreddits() {
   return [
     {
-      name: 'Front Page'
+      name: 'AskReddit'
     },
     {
-      name: 'r/AskReddit'
+      name: 'ProgrammerHumor'
     },
     {
-      name: 'r/gtaonline'
+      name: 'gtaonline'
     },
     {
-      name: '/r/vancouver'
+      name: 'vancouver'
     }
   ];
 }
