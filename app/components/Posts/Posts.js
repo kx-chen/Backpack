@@ -5,8 +5,7 @@ import Col from 'react-bootstrap/Col';
 import styles from '../../containers/App/App.css';
 
 type Props = {
-  posts: any,
-  dispatch: () => void,
+  posts: {},
   loading: boolean
 };
 
@@ -16,7 +15,8 @@ class Posts extends Component<Props> {
   generatePostList() {
     const { posts } = this.props;
 
-    const listItems = posts.data.children.map((post) => (
+    // eslint-disable-next-line react/prop-types
+    const listItems = posts.data.children.map(post => (
       <ListGroup.Item
         // onClick={() => dispatch(PostActions.fetchPostById(id))}
         action

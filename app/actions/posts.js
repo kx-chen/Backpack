@@ -68,10 +68,6 @@ export function fetchPostById(id) {
   };
 }
 
-function getAllPosts() {
-  // return call();
-}
-
 function getAllSubreddits() {
   return [
     {

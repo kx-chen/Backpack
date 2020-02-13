@@ -3,7 +3,8 @@ import {
   LOAD_POST_START,
   LOAD_POST_SUCCESS,
   LOAD_SUBREDDITS,
-  SELECT_POST, SELECT_SUBREDDIT
+  SELECT_POST,
+  SELECT_SUBREDDIT
 } from '../actions/posts';
 
 const initialState = {

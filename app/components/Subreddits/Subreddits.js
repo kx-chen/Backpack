@@ -14,6 +14,7 @@ export default class Subreddits extends Component<Props> {
   render() {
     const { subreddits, onSubredditSelected } = this.props;
 
+    // eslint-disable-next-line react/prop-types
     const listItems = subreddits.map(subreddit => (
       <ListGroup.Item
         onClick={() => onSubredditSelected(subreddit.name)}
