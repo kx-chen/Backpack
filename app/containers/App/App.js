@@ -17,8 +17,6 @@ export default class App extends Component<Props> {
       <div>
         <Container fluid>
           <Row className={styles.row}>
-            {/* TODO: DRY */}
-            {/* TODO: Rename to *Column? */}
             <SubredditsContainer />
             <PostContainer />
             <Post />
