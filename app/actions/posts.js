@@ -51,6 +51,7 @@ export function fetchSubreddits() {
 export function fetchSubredditPosts(subreddit) {
   console.log('fetchSubredditPosts');
   return dispatch => {
+    dispatch(subredditSelected(subreddit));
     dispatch(loadPostsStart());
 
     return (
