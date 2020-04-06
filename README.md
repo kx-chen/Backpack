@@ -27,8 +27,3 @@ To package apps for the local platform:
 ```bash
 $ yarn package
 ```
-
-
-## License
-
-MIT © [Reddit Offline Desktop](https://github.com/kx-chen/reddit-offline-desktop)
