@@ -7,13 +7,15 @@ import * as PostActions from '../../actions/posts';
 type Props = {
   posts: [],
   dispatch: () => void,
-  loading: boolean
+  loading: boolean,
+  name: string
 };
 
 function mapStateToProps(state) {
   return {
-    posts: state.postData,
-    loading: state.postData.loading
+    posts: state.postData.posts,
+    loading: state.postData.loading,
+    name: state.postData.name
   };
 }
 
@@ -21,12 +23,14 @@ class PostContainer extends Component<Props> {
   props: Props;
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(PostActions.fetchSubredditPosts());
+    const { dispatch, name } = this.props;
+    console.log('dispatching fetch', name);
+    dispatch(PostActions.fetchSubredditPosts(name));
   }
 
   render() {
     const { posts, dispatch, loading } = this.props;
+
     // TODO: check if this is the correct of passing
     return <Posts posts={posts} dispatch={dispatch} loading={loading} />;
   }

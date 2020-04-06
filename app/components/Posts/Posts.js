@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Col from 'react-bootstrap/Col';
-import * as PostActions from '../../actions/posts';
+// import * as PostActions from '../../actions/posts';
 import styles from '../../containers/App/App.css';
 
 type Props = {
-  posts: [],
-  dispatch: () => void,
+  posts: {},
   loading: boolean
 };
 
@@ -14,22 +13,25 @@ class Posts extends Component<Props> {
   props: Props;
 
   generatePostList() {
-    const { posts, dispatch } = this.props;
+    const { posts } = this.props;
 
-    const listItems = posts.posts.map((post, id) => (
+    // eslint-disable-next-line react/prop-types
+    const listItems = posts.data.children.map(post => (
       <ListGroup.Item
-        onClick={() => dispatch(PostActions.fetchPostById(id))}
+        // onClick={() => dispatch(PostActions.fetchPostById(id))}
         action
       >
-        {post.title} <br />
-        {post.karma}
+        {post.data.title} <br />
+        {post.data.score}
       </ListGroup.Item>
     ));
     return listItems;
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading, posts } = this.props;
+    console.log('posts loaded', posts);
+    console.log('loading', loading);
 
     if (loading) {
       return (
