@@ -1,9 +1,7 @@
 import React from 'react';
-import { Switch, Route } from 'react-router';
-import App from './containers/App/App';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import {Link} from "react-router-dom";
-import PostPage from "./containers/PostPage";
+import {Route, Switch} from "react-router";
 
 export default () => (
   <div>
@@ -32,10 +30,10 @@ export default () => (
         </NavItem>
       </SideNav.Nav>
     </SideNav>
-    <main>
-      <Route path="/" exact component={props => <PostPage props={props}/>} />
-      <Route path="/home" component={props => <h1> Home </h1>} />
-      <Route path="/devices" component={props => <h1> Devices </h1>} />
-    </main>
+    <Switch>
+      <Route path="/" exact component={props => <h1> /HomeHomeHomeHomeHomeHomeHomeHomeHomeHomeHomeHomeHomeHome </h1>} />
+      <Route path="/home" component={props => <h1> routerrouterrouterrouterrouterrouterrouterrouterrouterrouterrouter </h1>} />
+      <Route path="/devices" component={props => <h1> SwitchSwitchSwitchSwitchSwitchSwitchSwitchSwitchSwitchSwitchSwitchSwitchSwitch </h1>} />
+    </Switch>
   </div>
 );
