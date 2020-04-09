@@ -1,11 +1,5 @@
 // @flow
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import SubredditsContainer from '../SubredditsContainer/SubredditsContainer';
-import PostContainer from '../PostContainer/PostContainer';
-import Post from '../../components/Post/Post';
-import styles from './App.css';
 
 type Props = {};
 
@@ -15,13 +9,7 @@ export default class App extends Component<Props> {
   render() {
     return (
       <div>
-        <Container fluid>
-          <Row className={styles.row}>
-            <SubredditsContainer />
-            <PostContainer />
-            <Post />
-          </Row>
-        </Container>
+        <h1> Test </h1>
       </div>
     );
   }
