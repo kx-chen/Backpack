@@ -4,7 +4,6 @@
  */
 @import '~@fortawesome/fontawesome-free/css/all.css';
 @import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 body {
   position: relative;
@@ -29,7 +28,6 @@ li {
 }
 
 a {
-  color: white;
   opacity: 0.75;
   text-decoration: none;
 }
@@ -42,4 +40,46 @@ a:hover {
 
 .row {
   height: 100vh;
+}
+
+.sidebar {
+  width: 78px;
+  height: 100vh;
+  background-color: white;
+  /*padding: 1em;*/
+  transition: 2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+}
+
+.nav-item {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.nav-logo {
+  height: 50px;
+  border-radius: 50%;
+  border: 3px gray solid;
+}
+
+.nav-item--bottom {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #3B67DD;
+}
+
+body {
+  color: white;
+  background-color: #CBC9C9;
+}
+
+.nav-clickable {
+  cursor: pointer;
 }
