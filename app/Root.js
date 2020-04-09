@@ -14,7 +14,7 @@ type Props = {
 const Root = ({ store, history }: Props) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App/>
+      <App />
     </ConnectedRouter>
   </Provider>
 );
