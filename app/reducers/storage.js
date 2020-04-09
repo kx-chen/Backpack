@@ -1,6 +1,6 @@
 const initialState = {
   posts: [],
-  subreddits: [],
+  subreddits: []
 };
 
 export default function storage(state = initialState, action) {
