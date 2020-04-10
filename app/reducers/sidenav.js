@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { TOGGLE_MENU } from "../actions/sidenav";
+=======
+import { TOGGLE_MENU } from '../actions/sidenav';
+>>>>>>> RO-9 Add sidebar arrow to open/close menu
 
 const initialState = {
   open: true

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 
-function Nav({ onMenuChange, open}) {
+function Nav({ onMenuChange, open }) {
   let width = '78px';
   if (open) {
     width = '200px';
@@ -21,8 +21,9 @@ function Nav({ onMenuChange, open}) {
   const sidebarStyle = {
     width: width
   };
-  const subreddits = ["1", "2", "3", "4"];
-  const subredditsList = subreddits.map((subreddit) =>
+
+  const subreddits = ['1', '2', '3', '4'];
+  const subredditsList = subreddits.map(subreddit => (
     <div className="nav-item">
       <Link to="/">
         <img
@@ -32,7 +33,8 @@ function Nav({ onMenuChange, open}) {
         />
       </Link>
     </div>
-  );
+  ));
+  
   return (
     <nav className="sidebar" style={sidebarStyle}>
       <div className="nav-item search">
