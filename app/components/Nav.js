@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+import SubredditIcon from './SubredditIcon';
 
 function Nav({ onMenuChange, open }) {
   let width = '78px';
@@ -15,7 +16,7 @@ function Nav({ onMenuChange, open }) {
   const arrowStyle = {
     left: left,
     position: 'absolute',
-    transition: '2s'
+    transition: '0.3s'
   };
 
   const sidebarStyle = {
@@ -24,15 +25,7 @@ function Nav({ onMenuChange, open }) {
 
   const subreddits = ['1', '2', '3', '4'];
   const subredditsList = subreddits.map(subreddit => (
-    <div className="nav-item">
-      <Link to="/">
-        <img
-          alt="logo for subreddit"
-          className="nav-logo"
-          src="https://styles.redditmedia.com/t5_2sdpm/styles/communityIcon_u6zl61vcy9511.png"
-        />
-      </Link>
-    </div>
+    <SubredditIcon name="r/Doo" open={open} />
   ));
   
   return (

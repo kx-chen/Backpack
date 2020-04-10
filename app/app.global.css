@@ -47,7 +47,7 @@ a:hover {
   height: 100vh;
   background-color: white;
   /*padding: 1em;*/
-  transition: 2s;
+  transition: 0.3s;
   display: flex;
   flex-direction: column;
 }
@@ -60,6 +60,7 @@ a:hover {
   text-align: left;
   padding-top: 20px;
   padding-left: 12px;
+  display: flex;
 }
 
 .nav-logo {
@@ -88,4 +89,15 @@ body {
 
 .search {
   padding-left: 22px;
+}
+
+.subreddit-name {
+  font-weight: 800;
+  color: black;
+  padding-left: 10px;
+}
+
+.download-status {
+  align-self: end;
+  margin: auto 10px auto auto;
 }
