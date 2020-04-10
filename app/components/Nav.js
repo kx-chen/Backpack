@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
 import SubredditIcon from './SubredditIcon';
 
@@ -27,7 +26,7 @@ function Nav({ onMenuChange, open }) {
   const subredditsList = subreddits.map(subreddit => (
     <SubredditIcon name="r/Doo" open={open} />
   ));
-  
+
   return (
     <nav className="sidebar" style={sidebarStyle}>
       <div className="nav-item search">
