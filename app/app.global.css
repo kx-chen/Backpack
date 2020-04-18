@@ -58,9 +58,10 @@ a:hover {
 
 .nav-item {
   text-align: left;
-  padding-top: 20px;
+  padding-bottom: 10px;
   padding-left: 12px;
   display: flex;
+  padding-top: 10px;
 }
 
 .nav-logo {

@@ -1,7 +1,7 @@
 import React from 'react';
 import SubredditIcon from './SubredditIcon';
 
-function Nav({ onMenuChange, open }) {
+function Nav({ onMenuChange, open, onSubredditSelect, selected_subreddit, subreddits }) {
   let width = '78px';
   if (open) {
     width = '200px';
@@ -22,9 +22,11 @@ function Nav({ onMenuChange, open }) {
     width: width
   };
 
-  const subreddits = ['1', '2', '3', '4'];
   const subredditsList = subreddits.map(subreddit => (
-    <SubredditIcon name="r/Doo" open={open} />
+    <SubredditIcon name={subreddit.name}
+                   open={open}
+                   onSelected={ () => onSubredditSelect(subreddit)}
+                   selected={subreddit.name === selected_subreddit}/>
   ));
 
   return (
