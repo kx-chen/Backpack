@@ -4,11 +4,13 @@ import { connectRouter } from 'connected-react-router';
 import type { HashHistory } from 'history';
 import posts from './post';
 import sidenav from './sidenav';
+import subreddits from './subreddits';
 
 export default function createRootReducer(history: HashHistory) {
   return combineReducers<{}, *>({
     router: connectRouter(history),
-    postData: posts,
-    sidenav
+    posts,
+    sidenav,
+    subreddits,
   });
 }
