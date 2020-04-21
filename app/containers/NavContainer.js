@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import Nav from '../components/Nav';
 import { toggleMenu } from "../actions/sidenav";
-import { subredditSelected } from "../actions/subreddits";
+import { subredditSelected, triggerDownloadSubredditStart } from "../actions/subreddits";
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onMenuChange: open => dispatch(toggleMenu(open)),
-    onSubredditSelect: subreddit => dispatch(subredditSelected(subreddit))
+    onSubredditSelect: subreddit => dispatch(subredditSelected(subreddit)),
+    downloadSubreddit: subreddit => dispatch(triggerDownloadSubredditStart(subreddit))
   };
 }
 

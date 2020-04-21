@@ -1,3 +1,5 @@
+import { downloadSubredditJSON } from "../helpers/subredditDownloader";
+
 export const DOWNLOAD_SUBREDDITS_SUCCESS = 'DOWNLOAD_SUBREDDITS_SUCCESS';
 export const DOWNLOAD_SUBREDDITS_START = 'DOWNLOAD_SUBREDDITS_START';
 
@@ -16,6 +18,15 @@ function downloadSubredditStart(selected_subreddit) {
     downloading_subreddit: true,
     downloading_subreddit_name: selected_subreddit,
   };
+}
+
+export function triggerDownloadSubredditStart(selected_subreddit) {
+  return dispatch => {
+    dispatch(downloadSubredditStart(selected_subreddit));
+    downloadSubredditJSON(selected_subreddit).then((res) => {
+      dispatch(downloadSubredditsSuccess(res));
+    })
+  }
 }
 
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';

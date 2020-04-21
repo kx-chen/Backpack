@@ -1,5 +1,7 @@
 // @flow
 import {
+  DOWNLOAD_SUBREDDITS_START,
+  DOWNLOAD_SUBREDDITS_SUCCESS,
   LOAD_SUBREDDITS_START,
   LOAD_SUBREDDITS_SUCCESS,
   SELECT_SUBREDDIT
@@ -10,7 +12,7 @@ const initialState = {
   loading_subreddits: true,
   selected_subreddit: '',
   downloading_subreddit: false,
-  downloaded_posts: []
+  downloaded_posts: ""
 };
 
 export default function subreddits(state = initialState, action) {
@@ -31,6 +33,19 @@ export default function subreddits(state = initialState, action) {
       return {
         ...state,
         subreddits: action.subreddits,
+      };
+    case DOWNLOAD_SUBREDDITS_SUCCESS:
+      return {
+        ...state,
+        downloading_subreddit: action.downloading_subreddit,
+        downloading_subreddit_name: action.downloading_subreddit_name,
+        downloaded_posts: action.downloaded_posts,
+      };
+    case DOWNLOAD_SUBREDDITS_START:
+      return {
+        ...state,
+        downloading_subreddit: action.downloading_subreddit,
+        downloading_subreddit_name: action.downloading_subreddit_name,
       };
     default:
       return state;
