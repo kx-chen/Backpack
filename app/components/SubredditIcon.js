@@ -1,10 +1,11 @@
 import React from 'react';
 
-function SubredditIcon({ logo, name, open, downloadStatus, onSelected, selected }) {
+function SubredditIcon({ name, open, onSelected, selected, downloadSubreddit }) {
   let subredditName = <span className="subreddit-name">{name}</span>;
 
   let downloadStatusDisplay = (
     <img
+      onClick={() => downloadSubreddit(name)}
       alt="download status"
       src="../resources/check-circle.svg"
       height="30"
