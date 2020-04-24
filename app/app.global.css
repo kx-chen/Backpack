@@ -58,10 +58,10 @@ a:hover {
 
 .nav-item {
   text-align: left;
-  padding-bottom: 10px;
+  padding-bottom: 7px;
   padding-left: 12px;
   display: flex;
-  padding-top: 10px;
+  padding-top: 7px;
 }
 
 .nav-logo {

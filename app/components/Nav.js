@@ -26,7 +26,7 @@ function Nav({
   };
 
   const sidebarStyle = {
-    width
+    minWidth: width
   };
 
   const subredditsList = subreddits.map(subreddit => (

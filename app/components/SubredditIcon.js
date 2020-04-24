@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function SubredditIcon({
   name,
@@ -34,14 +35,14 @@ function SubredditIcon({
   }
   return (
     <div className="nav-item" style={style}>
-      <a onClick={() => onSelected(name)}>
+      <Link to={`/r/${name}`} onClick={() => onSelected(name)}>
         <img
           alt="logo for subreddit"
           className="nav-logo"
           src="https://styles.redditmedia.com/t5_2sdpm/styles/communityIcon_u6zl61vcy9511.png"
         />
         {subredditName}
-      </a>
+      </Link>
       {downloadStatusDisplay}
     </div>
   );

@@ -11,9 +11,9 @@ import {
 const initialState = {
   subreddits: [],
   loading_subreddits: true,
-  selected_subreddit: '',
+  selected_subreddit: null,
   downloading_subreddit: false,
-  downloaded_posts: ''
+  downloaded_posts: []
 };
 
 export default function subreddits(state = initialState, action) {
@@ -46,7 +46,6 @@ export default function subreddits(state = initialState, action) {
         ...state,
         downloading_subreddit: action.downloading_subreddit,
         downloading_subreddit_name: action.downloading_subreddit_name,
-        downloaded_posts: action.downloaded_posts
       };
     case DOWNLOAD_SUBREDDITS_START:
       return {
