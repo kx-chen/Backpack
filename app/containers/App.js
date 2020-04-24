@@ -3,17 +3,15 @@ import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
 import NavContainer from './NavContainer';
 import { fetchSubreddits } from '../actions/subreddits';
+import SubredditContainer from './SubredditContainer';
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch) {
   return {
     loadSubreddits: () => dispatch(fetchSubreddits())
   };
 }
 
-function mapStateToProps(state, ownProps) {
-  return {};
-}
-
+// eslint-disable-next-line react/prop-types
 function App({ loadSubreddits }) {
   useEffect(() => {
     loadSubreddits();
@@ -23,12 +21,18 @@ function App({ loadSubreddits }) {
     <div className="app-container">
       <NavContainer />
       <Switch>
-        <Route path="/" exact component={() => <h1> First</h1>} />
-        <Route path="/home" component={() => <h1> Second</h1>} />
-        <Route path="/devices" component={() => <h1> Third </h1>} />
+        <Route path="/" exact>
+          <h1>d</h1>
+        </Route>
+        <Route path="/r/:subreddit">
+          <SubredditContainer />
+        </Route>
+        <Route path="/r/:subreddit/:post">
+          <h1>r/subreddit/post</h1>
+        </Route>
       </Switch>
     </div>
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(() => {}, mapDispatchToProps)(App);

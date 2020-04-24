@@ -1,15 +1,15 @@
 import {
-  downloadSubredditJSON, fetchSubredditPosts,
+  downloadSubredditJSON,
+  fetchSubredditPosts,
   saveSubredditJson
 } from '../helpers/subreddit';
 
 export const DOWNLOAD_SUBREDDITS_SUCCESS = 'DOWNLOAD_SUBREDDITS_SUCCESS';
 export const DOWNLOAD_SUBREDDITS_START = 'DOWNLOAD_SUBREDDITS_START';
 
-function downloadSubredditsSuccess(posts) {
+function downloadSubredditsSuccess() {
   return {
     type: DOWNLOAD_SUBREDDITS_SUCCESS,
-    downloaded_posts: posts,
     downloading_subreddit: false,
     downloading_subreddit_name: ''
   };
@@ -28,7 +28,7 @@ export function triggerDownloadSubredditStart(selectedSubreddit) {
     dispatch(downloadSubredditStart(selectedSubreddit));
     downloadSubredditJSON(selectedSubreddit)
       .then(res => {
-        dispatch(downloadSubredditsSuccess(res));
+        dispatch(downloadSubredditsSuccess());
         return res;
       })
       .then(res => saveSubredditJson(res, selectedSubreddit))
