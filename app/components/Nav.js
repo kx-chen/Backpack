@@ -1,7 +1,14 @@
 import React from 'react';
 import SubredditIcon from './SubredditIcon';
 
-function Nav({ onMenuChange, open, onSubredditSelect, selected_subreddit, subreddits, downloadSubreddit }) {
+function Nav({
+  onMenuChange,
+  open,
+  onSubredditSelect,
+  selected_subreddit,
+  subreddits,
+  downloadSubreddit
+}) {
   let width = '78px';
   if (open) {
     width = '200px';
@@ -13,21 +20,23 @@ function Nav({ onMenuChange, open, onSubredditSelect, selected_subreddit, subred
   }
 
   const arrowStyle = {
-    left: left,
+    left,
     position: 'absolute',
     transition: '0.3s'
   };
 
   const sidebarStyle = {
-    width: width
+    width
   };
 
   const subredditsList = subreddits.map(subreddit => (
-    <SubredditIcon name={subreddit.name}
-                   open={open}
-                   onSelected={ () => onSubredditSelect(subreddit)}
-                   downloadSubreddit={(name) => downloadSubreddit(name)}
-                   selected={subreddit.name === selected_subreddit}/>
+    <SubredditIcon
+      name={subreddit.name}
+      open={open}
+      onSelected={() => onSubredditSelect(subreddit)}
+      downloadSubreddit={name => downloadSubreddit(name)}
+      selected={subreddit.name === selected_subreddit}
+    />
   ));
 
   return (

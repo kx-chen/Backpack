@@ -1,6 +1,12 @@
 import React from 'react';
 
-function SubredditIcon({ name, open, onSelected, selected, downloadSubreddit }) {
+function SubredditIcon({
+  name,
+  open,
+  onSelected,
+  selected,
+  downloadSubreddit
+}) {
   let subredditName = <span className="subreddit-name">{name}</span>;
 
   let downloadStatusDisplay = (
@@ -18,12 +24,12 @@ function SubredditIcon({ name, open, onSelected, selected, downloadSubreddit }) 
   }
 
   let style = {
-    "background-color": 'white',
+    'background-color': 'white'
   };
 
-  if(selected) {
+  if (selected) {
     style = {
-      "background-color": 'gray',
+      'background-color': 'gray'
     };
   }
   return (

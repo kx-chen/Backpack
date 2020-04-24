@@ -12,7 +12,7 @@ const initialState = {
   loading_subreddits: true,
   selected_subreddit: '',
   downloading_subreddit: false,
-  downloaded_posts: ""
+  downloaded_posts: ''
 };
 
 export default function subreddits(state = initialState, action) {
@@ -32,20 +32,20 @@ export default function subreddits(state = initialState, action) {
     case SELECT_SUBREDDIT:
       return {
         ...state,
-        subreddits: action.subreddits,
+        subreddits: action.subreddits
       };
     case DOWNLOAD_SUBREDDITS_SUCCESS:
       return {
         ...state,
         downloading_subreddit: action.downloading_subreddit,
         downloading_subreddit_name: action.downloading_subreddit_name,
-        downloaded_posts: action.downloaded_posts,
+        downloaded_posts: action.downloaded_posts
       };
     case DOWNLOAD_SUBREDDITS_START:
       return {
         ...state,
         downloading_subreddit: action.downloading_subreddit,
-        downloading_subreddit_name: action.downloading_subreddit_name,
+        downloading_subreddit_name: action.downloading_subreddit_name
       };
     default:
       return state;

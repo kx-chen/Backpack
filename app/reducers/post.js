@@ -2,7 +2,7 @@
 import {
   LOAD_POST_START,
   LOAD_POST_SUCCESS,
-  SELECT_POST,
+  SELECT_POST
 } from '../actions/posts';
 
 const initialState = {
