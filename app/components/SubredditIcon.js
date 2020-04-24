@@ -34,7 +34,7 @@ function SubredditIcon({
   }
   return (
     <div className="nav-item" style={style}>
-      <a onClick={onSelected}>
+      <a onClick={() => onSelected(name)}>
         <img
           alt="logo for subreddit"
           className="nav-logo"
