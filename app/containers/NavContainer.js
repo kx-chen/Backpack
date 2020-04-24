@@ -6,7 +6,7 @@ import {
   triggerDownloadSubredditStart
 } from '../actions/subreddits';
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch) {
   return {
     onMenuChange: open => dispatch(toggleMenu(open)),
     onSubredditSelect: subreddit => dispatch(subredditSelected(subreddit)),
@@ -15,7 +15,7 @@ function mapDispatchToProps(dispatch, ownProps) {
   };
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     subreddits: state.subreddits.subreddits,
     selected_subreddit: state.subreddits.selected_subreddit,

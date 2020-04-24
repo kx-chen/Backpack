@@ -33,7 +33,7 @@ function Nav({
     <SubredditIcon
       name={subreddit.name}
       open={open}
-      onSelected={() => onSubredditSelect(subreddit)}
+      onSelected={name => onSubredditSelect(name)}
       downloadSubreddit={name => downloadSubreddit(name)}
       selected={subreddit.name === selected_subreddit}
     />

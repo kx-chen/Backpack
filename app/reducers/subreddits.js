@@ -3,8 +3,9 @@ import {
   DOWNLOAD_SUBREDDITS_START,
   DOWNLOAD_SUBREDDITS_SUCCESS,
   LOAD_SUBREDDITS_START,
-  LOAD_SUBREDDITS_SUCCESS,
-  SELECT_SUBREDDIT
+  LOAD_SUBREDDITS_POSTS_SUCCESS,
+  SELECT_SUBREDDIT,
+  LOAD_SUBREDDITS_SUCCESS
 } from '../actions/subreddits';
 
 const initialState = {
@@ -22,6 +23,12 @@ export default function subreddits(state = initialState, action) {
         ...state,
         loading_subreddits: true,
         selected_subreddit: action.selected_subreddit
+      };
+    case LOAD_SUBREDDITS_POSTS_SUCCESS:
+      return {
+        ...state,
+        downloaded_posts: action.downloaded_posts,
+        loading_subreddits: false
       };
     case LOAD_SUBREDDITS_SUCCESS:
       return {

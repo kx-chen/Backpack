@@ -1,7 +1,7 @@
 import {
-  downloadSubredditJSON,
+  downloadSubredditJSON, fetchSubredditPosts,
   saveSubredditJson
-} from '../helpers/subredditDownloader';
+} from '../helpers/subreddit';
 
 export const DOWNLOAD_SUBREDDITS_SUCCESS = 'DOWNLOAD_SUBREDDITS_SUCCESS';
 export const DOWNLOAD_SUBREDDITS_START = 'DOWNLOAD_SUBREDDITS_START';
@@ -37,8 +37,16 @@ export function triggerDownloadSubredditStart(selectedSubreddit) {
 }
 
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
+export const LOAD_SUBREDDITS_POSTS_SUCCESS = 'LOAD_SUBREDDITS_POSTS_SUCCESS';
 export const LOAD_SUBREDDITS_SUCCESS = 'LOAD_SUBREDDITS_SUCCESS';
 export const LOAD_SUBREDDITS_START = 'LOAD_SUBREDDITS_START';
+
+function loadSubredditsPostsSuccess(downloaded_posts) {
+  return {
+    type: LOAD_SUBREDDITS_POSTS_SUCCESS,
+    downloaded_posts
+  };
+}
 
 function loadSubredditsSuccess(subreddits) {
   return {
@@ -47,17 +55,19 @@ function loadSubredditsSuccess(subreddits) {
   };
 }
 
-function loadSubredditStart(selectedSubreddit) {
+function loadSubredditPostsStart(selectedSubreddit) {
   return {
     type: LOAD_SUBREDDITS_START,
-    selected_subreddit: selectedSubreddit.name
+    selected_subreddit: selectedSubreddit
   };
 }
 
 export function subredditSelected(subreddit) {
   return dispatch => {
-    dispatch(loadSubredditStart(subreddit));
-    dispatch(fetchSubreddits());
+    dispatch(loadSubredditPostsStart(subreddit));
+    fetchSubredditPosts(subreddit)
+      .then(res => dispatch(loadSubredditsPostsSuccess(res)))
+      .catch(err => console.error(err));
   };
 }
 
