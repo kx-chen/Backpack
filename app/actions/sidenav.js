@@ -4,5 +4,5 @@ export function toggleMenu(open) {
   return {
     type: TOGGLE_MENU,
     open: !open
-  }
+  };
 }

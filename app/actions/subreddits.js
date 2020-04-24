@@ -1,4 +1,7 @@
-import { downloadSubredditJSON } from "../helpers/subredditDownloader";
+import {
+  downloadSubredditJSON,
+  saveSubredditJson
+} from '../helpers/subredditDownloader';
 
 export const DOWNLOAD_SUBREDDITS_SUCCESS = 'DOWNLOAD_SUBREDDITS_SUCCESS';
 export const DOWNLOAD_SUBREDDITS_START = 'DOWNLOAD_SUBREDDITS_START';
@@ -8,25 +11,29 @@ function downloadSubredditsSuccess(posts) {
     type: DOWNLOAD_SUBREDDITS_SUCCESS,
     downloaded_posts: posts,
     downloading_subreddit: false,
-    downloading_subreddit_name: "",
+    downloading_subreddit_name: ''
   };
 }
 
-function downloadSubredditStart(selected_subreddit) {
+function downloadSubredditStart(selectedSubreddit) {
   return {
     type: DOWNLOAD_SUBREDDITS_START,
     downloading_subreddit: true,
-    downloading_subreddit_name: selected_subreddit,
+    downloading_subreddit_name: selectedSubreddit
   };
 }
 
-export function triggerDownloadSubredditStart(selected_subreddit) {
+export function triggerDownloadSubredditStart(selectedSubreddit) {
   return dispatch => {
-    dispatch(downloadSubredditStart(selected_subreddit));
-    downloadSubredditJSON(selected_subreddit).then((res) => {
-      dispatch(downloadSubredditsSuccess(res));
-    })
-  }
+    dispatch(downloadSubredditStart(selectedSubreddit));
+    downloadSubredditJSON(selectedSubreddit)
+      .then(res => {
+        dispatch(downloadSubredditsSuccess(res));
+        return res;
+      })
+      .then(res => saveSubredditJson(res, selectedSubreddit))
+      .catch(err => console.error(err));
+  };
 }
 
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
@@ -40,10 +47,10 @@ function loadSubredditsSuccess(subreddits) {
   };
 }
 
-function loadSubredditStart(selected_subreddit) {
+function loadSubredditStart(selectedSubreddit) {
   return {
     type: LOAD_SUBREDDITS_START,
-    selected_subreddit: selected_subreddit.name
+    selected_subreddit: selectedSubreddit.name
   };
 }
 

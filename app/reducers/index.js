@@ -11,6 +11,6 @@ export default function createRootReducer(history: HashHistory) {
     router: connectRouter(history),
     posts,
     sidenav,
-    subreddits,
+    subreddits
   });
 }
