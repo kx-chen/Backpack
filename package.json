@@ -240,6 +240,7 @@
     "electron-debug": "^3.0.1",
     "electron-log": "^4.0.0",
     "electron-updater": "^4.2.0",
+    "fs-extra": "^9.0.0",
     "history": "^4.10.1",
     "jquery": "^3.4.1",
     "react": "^16.13.1",
