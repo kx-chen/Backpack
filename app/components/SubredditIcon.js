@@ -8,14 +8,14 @@ function SubredditIcon({
   selected,
   downloadSubreddit
 }) {
-  let subredditName = <span className="subreddit-name">{name}</span>;
+  let subredditName = <span className="subreddit-name">{`r/${name}`}</span>;
 
   let downloadStatusDisplay = (
     <img
       onClick={() => downloadSubreddit(name)}
       alt="download status"
       src="../resources/check-circle.svg"
-      height="30"
+      height="20"
       className="nav-clickable download-status"
     />
   );
