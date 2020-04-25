@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import { getDataPathForSubreddit } from './utils';
 
 export async function downloadSubredditJSON(name) {
-  return fetch(`https://reddit.com/r/${name}.json`)
+  return fetch(`https://reddit.com/r/${name}.json?limit=100`)
     .then((res, err) => {
       if (err) {
         return 'error!';
@@ -20,7 +20,7 @@ export function saveSubredditJson(data, selectedSubreddit) {
   // append the last updated date to the json
   data.lastUpdated = new Date();
 
-  fs.outputJson(userDataPath, data).catch(err => {
+  return fs.outputJson(userDataPath, data).catch(err => {
     throw err;
   });
 }
