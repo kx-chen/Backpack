@@ -15,7 +15,7 @@ function PostsList({ selectedSubreddit, downloadedPosts, loading }) {
     return <li>{subreddit.data.title}</li>;
   });
   return (
-    <div>
+    <div className="subreddit-posts">
       {selectedSubreddit}
       <ul>{posts}</ul>
     </div>
