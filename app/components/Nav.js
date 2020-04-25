@@ -15,12 +15,15 @@ function Nav({
   }
 
   let left = '85px';
+  let transform = 'rotate(180deg)';
   if (open) {
     left = '210px';
+    transform = 'rotate(0deg)';
   }
 
   const arrowStyle = {
     left,
+    transform
   };
 
   const sidebarStyle = {
