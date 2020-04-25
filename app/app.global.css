@@ -140,6 +140,8 @@ a:hover {
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #3b67dd;
+  font-size: 25px;
+  min-height: 70px;
 }
 
 body {
@@ -160,13 +162,27 @@ body {
   color: black;
   padding-left: 10px;
   font-size: 16px;
+  margin-top: 10px;
+  transition: visibility 0.3s ease 0s;
+  cursor: pointer;
 }
 
 .download-status {
   align-self: end;
   margin: auto 10px auto auto;
+  transition: opacity 0.2s ease 0.2s;
 }
 
 .subreddit-posts {
   overflow: auto;
+}
+
+.sidenav-arrow {
+  position: absolute;
+  transition: left 0.3s ease 0s;
+  bottom: 20px;
+}
+
+.flex {
+  display: flex;
 }
