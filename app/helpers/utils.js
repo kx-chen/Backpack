@@ -9,6 +9,15 @@ export function getDataPathForSubreddit(selectedSubreddit) {
   return userDataPath;
 }
 
+export function getDataPathForPost(selectedSubreddit, id) {
+  let userDataPath = app
+    ? app.getPath('userData')
+    : remote.app.getPath('userData');
+
+  userDataPath += `/reddit-offline/${selectedSubreddit}/${id}.json`;
+  return userDataPath;
+}
+
 export function getDataPath() {
   return null;
 }

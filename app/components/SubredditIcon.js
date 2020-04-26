@@ -63,16 +63,20 @@ function SubredditIcon({
   return (
     <div className="nav-item" style={style}>
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
-      <span className="nav-clickable flex" onClick={() => onSelected(name)}>
-        <Link to={`/r/${name}`}>
+      <Link
+        to={`/r/${name}`}
+        className="nav-clickable flex"
+        onClick={() => onSelected(name)}
+      >
+        <div>
           <img
             alt="logo for subreddit"
             className="nav-logo"
             src="https://styles.redditmedia.com/t5_2sdpm/styles/communityIcon_u6zl61vcy9511.png"
           />
-        </Link>
+        </div>
         {subredditName}
-      </span>
+      </Link>
       {downloadStatusDisplay}
     </div>
   );

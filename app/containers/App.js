@@ -22,7 +22,7 @@ function App({ loadSubreddits }) {
       <NavContainer />
       <Switch>
         <Route path="/" exact>
-          <h1>d</h1>
+          <h1>Select a subreddit from the side.</h1>
         </Route>
         <Route path="/r/:subreddit">
           <SubredditContainer />
