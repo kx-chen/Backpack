@@ -1,11 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SubredditIcon from './SubredditIcon';
+
+Nav.propTypes = {
+  onMenuChange: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+  onSubredditSelect: PropTypes.func.isRequired,
+  selectedSubreddit: PropTypes.string.isRequired,
+  subreddits: PropTypes.arrayOf(PropTypes.object).isRequired,
+  downloadSubreddit: PropTypes.func.isRequired
+};
 
 function Nav({
   onMenuChange,
   open,
   onSubredditSelect,
-  selected_subreddit,
+  selectedSubreddit,
   subreddits,
   downloadSubreddit
 }) {
@@ -36,7 +46,7 @@ function Nav({
       open={open}
       onSelected={name => onSubredditSelect(name)}
       downloadSubreddit={name => downloadSubreddit(name)}
-      selected={subreddit.name === selected_subreddit}
+      selected={subreddit.name === selectedSubreddit}
     />
   ));
 
@@ -65,12 +75,11 @@ function Nav({
           className="nav-clickable"
         />
       </div>
-      <div>
-      {subredditsList}
-      </div>
+      <div>{subredditsList}</div>
       <div className="nav-item--bottom">
         {settingsButton}
         <div>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
           <img
             alt="open and close menu"
             src="../resources/arrow-circle-left.svg"

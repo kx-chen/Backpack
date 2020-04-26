@@ -18,7 +18,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     subreddits: state.subreddits.subreddits,
-    selected_subreddit: state.subreddits.selected_subreddit,
+    selectedSubreddit: state.subreddits.selected_subreddit,
     open: state.sidenav.open
   };
 }

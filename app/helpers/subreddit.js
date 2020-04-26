@@ -18,6 +18,7 @@ export async function downloadSubredditJSON(name) {
 export function saveSubredditJson(data, selectedSubreddit) {
   const userDataPath = getDataPathForSubreddit(selectedSubreddit);
   // append the last updated date to the json
+  // eslint-disable-next-line no-param-reassign
   data.lastUpdated = new Date();
 
   return fs.outputJson(userDataPath, data).catch(err => {

@@ -45,7 +45,7 @@ export default function subreddits(state = initialState, action) {
       return {
         ...state,
         downloading_subreddit: action.downloading_subreddit,
-        downloading_subreddit_name: action.downloading_subreddit_name,
+        downloading_subreddit_name: action.downloading_subreddit_name
       };
     case DOWNLOAD_SUBREDDITS_START:
       return {

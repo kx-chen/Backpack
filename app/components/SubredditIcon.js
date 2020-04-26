@@ -1,5 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+SubredditIcon.propTypes = {
+  name: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
+  onSelected: PropTypes.func.isRequired,
+  selected: PropTypes.bool.isRequired,
+  downloadSubreddit: PropTypes.func.isRequired
+};
 
 function SubredditIcon({
   name,
@@ -11,6 +20,7 @@ function SubredditIcon({
   let subredditName = <span className="subreddit-name">{`r/${name}`}</span>;
 
   let downloadStatusDisplay = (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
     <img
       onClick={() => downloadSubreddit(name)}
       alt="download status"
@@ -20,9 +30,15 @@ function SubredditIcon({
     />
   );
   if (!open) {
-    subredditName = <span className="subreddit-name" style={{ visibility: 'hidden', opacity: '0' }}>{`r/${name}`}</span>;
+    subredditName = (
+      <span
+        className="subreddit-name"
+        style={{ visibility: 'hidden', opacity: '0' }}
+      >{`r/${name}`}</span>
+    );
 
     downloadStatusDisplay = (
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
       <img
         onClick={() => downloadSubreddit(name)}
         alt="download status"
@@ -45,6 +61,7 @@ function SubredditIcon({
   }
   return (
     <div className="nav-item" style={style}>
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
       <span className="nav-clickable flex" onClick={() => onSelected(name)}>
         <Link to={`/r/${name}`}>
           <img

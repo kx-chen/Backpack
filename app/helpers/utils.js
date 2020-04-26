@@ -1,4 +1,4 @@
-import { app, remote } from "electron";
+import { app, remote } from 'electron';
 
 export function getDataPathForSubreddit(selectedSubreddit) {
   let userDataPath = app
@@ -7,4 +7,8 @@ export function getDataPathForSubreddit(selectedSubreddit) {
 
   userDataPath += `/reddit-offline/${selectedSubreddit}/${selectedSubreddit}.json`;
   return userDataPath;
+}
+
+export function getDataPath() {
+  return null;
 }

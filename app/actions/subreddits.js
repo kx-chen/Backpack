@@ -39,10 +39,10 @@ export const LOAD_SUBREDDITS_POSTS_SUCCESS = 'LOAD_SUBREDDITS_POSTS_SUCCESS';
 export const LOAD_SUBREDDITS_SUCCESS = 'LOAD_SUBREDDITS_SUCCESS';
 export const LOAD_SUBREDDITS_START = 'LOAD_SUBREDDITS_START';
 
-function loadSubredditsPostsSuccess(downloaded_posts) {
+function loadSubredditsPostsSuccess(downloadedPosts) {
   return {
     type: LOAD_SUBREDDITS_POSTS_SUCCESS,
-    downloaded_posts
+    downloaded_posts: downloadedPosts
   };
 }
 
