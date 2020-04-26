@@ -66,12 +66,7 @@ function Nav({
   return (
     <nav className="sidebar" style={sidebarStyle}>
       <div className="nav-item search">
-        <img
-          alt="search"
-          src={search}
-          height="27"
-          className="nav-clickable"
-        />
+        <img alt="search" src={search} height="27" className="nav-clickable" />
       </div>
       <div>{subredditsList}</div>
       <div className="nav-item--bottom">
