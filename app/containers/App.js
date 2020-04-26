@@ -35,4 +35,6 @@ function App({ loadSubreddits }) {
   );
 }
 
-export default connect(() => {}, mapDispatchToProps)(App);
+export default connect(() => {
+  return {};
+}, mapDispatchToProps)(App);

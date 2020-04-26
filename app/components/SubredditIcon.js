@@ -52,12 +52,12 @@ function SubredditIcon({
   }
 
   let style = {
-    'background-color': 'white'
+    backgroundColor: 'white'
   };
 
   if (selected) {
     style = {
-      'background-color': 'gray'
+      backgroundColor: 'gray'
     };
   }
   return (

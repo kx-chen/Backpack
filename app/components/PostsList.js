@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 PostsList.propTypes = {
   selectedSubreddit: PropTypes.string.isRequired,
-  downloadedPosts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  downloadedPosts: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired
 };
 
@@ -17,7 +18,7 @@ function PostsList({ selectedSubreddit, downloadedPosts, loading }) {
     return <h1> Select a subreddit from the side.</h1>;
   }
   const posts = downloadedPosts.data.children.map(subreddit => {
-    return <li>{subreddit.data.title}</li>;
+    return <li key={subreddit.data.id}>{subreddit.data.title}</li>;
   });
   return (
     <div className="subreddit-posts">
