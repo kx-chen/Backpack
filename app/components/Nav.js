@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SubredditIcon from './SubredditIcon';
+import cog from '../../resources/cog.svg';
+import search from '../../resources/search.svg';
+import arrow from '../../resources/arrow-circle-left.svg';
 
 Nav.propTypes = {
   onMenuChange: PropTypes.func.isRequired,
@@ -56,12 +59,7 @@ function Nav({
     settingsButton = <span>Settings</span>;
   } else {
     settingsButton = (
-      <img
-        alt="settings"
-        src="../resources/cog.svg"
-        height="30"
-        className="nav-clickable"
-      />
+      <img alt="settings" src={cog} height="30" className="nav-clickable" />
     );
   }
 
@@ -70,7 +68,7 @@ function Nav({
       <div className="nav-item search">
         <img
           alt="search"
-          src="../resources/search.svg"
+          src={search}
           height="27"
           className="nav-clickable"
         />
@@ -82,7 +80,7 @@ function Nav({
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
           <img
             alt="open and close menu"
-            src="../resources/arrow-circle-left.svg"
+            src={arrow}
             height="30"
             className="nav-clickable sidenav-arrow"
             style={arrowStyle}

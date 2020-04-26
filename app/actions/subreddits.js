@@ -30,6 +30,7 @@ export function triggerDownloadSubredditStart(selectedSubreddit) {
     downloadSubredditJSON(selectedSubreddit)
       .then(res => saveSubredditJson(res, selectedSubreddit))
       .then(() => dispatch(downloadSubredditsSuccess()))
+      .then(() => dispatch(subredditSelected(selectedSubreddit)))
       .catch(err => console.error(err));
   };
 }

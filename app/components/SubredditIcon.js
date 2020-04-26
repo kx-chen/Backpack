@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import checkmark from '../../resources/check-circle.svg';
 
 SubredditIcon.propTypes = {
   name: PropTypes.string.isRequired,
@@ -24,7 +25,7 @@ function SubredditIcon({
     <img
       onClick={() => downloadSubreddit(name)}
       alt="download status"
-      src="../resources/check-circle.svg"
+      src={checkmark}
       height="20"
       className="nav-clickable download-status"
     />
@@ -42,7 +43,7 @@ function SubredditIcon({
       <img
         onClick={() => downloadSubreddit(name)}
         alt="download status"
-        src="../resources/check-circle.svg"
+        src={checkmark}
         height="20"
         className="nav-clickable download-status"
         style={{ visibility: 'hidden', opacity: '0' }}
