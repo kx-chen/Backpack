@@ -7,7 +7,8 @@ PostsList.propTypes = {
   selectedSubreddit: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   downloadedPosts: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  onPostSelected: PropTypes.func.isRequired
 };
 
 const PostsFlexContainer = styled.div`
@@ -18,7 +19,12 @@ const PostsFlexContainer = styled.div`
   overflow: auto;
 `;
 
-function PostsList({ selectedSubreddit, downloadedPosts, loading }) {
+function PostsList({
+  selectedSubreddit,
+  downloadedPosts,
+  loading,
+  onPostSelected
+}) {
   if (loading) {
     return <h1>Loading...</h1>;
   }
@@ -30,11 +36,13 @@ function PostsList({ selectedSubreddit, downloadedPosts, loading }) {
   const posts = downloadedPosts.data.children.map(subreddit => {
     return (
       <Post
+        id={subreddit.data.id}
         key={subreddit.data.id}
         title={subreddit.data.title}
         numComments={subreddit.data.num_comments}
         author={subreddit.data.author}
         ups={subreddit.data.ups}
+        onPostSelected={id => onPostSelected(id)}
       />
     );
   });

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import PostsList from '../components/PostsList';
+import { postSelected } from '../actions/posts';
 
 function mapStateToProps(state) {
   return {
@@ -9,4 +10,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(PostsList);
+function mapDispatchToProps(dispatch) {
+  return {
+    onPostSelected: id => dispatch(postSelected(id))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsList);

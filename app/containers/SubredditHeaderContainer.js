@@ -1,5 +1,12 @@
 import { connect } from 'react-redux';
 import SubredditHeader from '../components/SubredditHeader';
+import { postSelected } from '../actions/posts';
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onPostSelected: id => dispatch(postSelected(id))
+  };
+}
 
 function mapStateToProps(state) {
   return {
@@ -7,4 +14,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(SubredditHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(SubredditHeader);

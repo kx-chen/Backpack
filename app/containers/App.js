@@ -7,6 +7,7 @@ import NavContainer from './NavContainer';
 import { fetchSubreddits } from '../actions/subreddits';
 import SubredditContainer from './PostsContainer';
 import SubredditHeaderContainer from './SubredditHeaderContainer';
+import PostDetailContainer from './PostDetailContainer';
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -38,6 +39,7 @@ function App({ loadSubreddits }) {
           <FlexContainer>
             <SubredditHeaderContainer />
             <SubredditContainer />
+            <PostDetailContainer />
           </FlexContainer>
         </Route>
         <Route path="/r/:subreddit/:post">
