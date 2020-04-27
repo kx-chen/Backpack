@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import NavContainer from './NavContainer';
 import { fetchSubreddits } from '../actions/subreddits';
-import SubredditContainer from './SubredditContainer';
+import SubredditContainer from './PostsContainer';
 import SubredditHeaderContainer from './SubredditHeaderContainer';
 
 function mapDispatchToProps(dispatch) {
@@ -18,6 +18,7 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  overflow: auto;
 `;
 
 // eslint-disable-next-line react/prop-types

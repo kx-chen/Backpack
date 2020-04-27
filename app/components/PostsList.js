@@ -28,7 +28,15 @@ function PostsList({ selectedSubreddit, downloadedPosts, loading }) {
     return <h1> Select a subreddit from the side.</h1>;
   }
   const posts = downloadedPosts.data.children.map(subreddit => {
-    return <Post key={subreddit.data.id} title={subreddit.data.title} />;
+    return (
+      <Post
+        key={subreddit.data.id}
+        title={subreddit.data.title}
+        numComments={subreddit.data.num_comments}
+        author={subreddit.data.author}
+        ups={subreddit.data.ups}
+      />
+    );
   });
   return (
     <div className="subreddit-posts">
