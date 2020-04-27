@@ -51,16 +51,18 @@ const CommentsIndicator = styled.span`
 `;
 
 Post.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   numComments: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   // created_utc: PropTypes.string.isRequired,
-  ups: PropTypes.string.isRequired
+  ups: PropTypes.string.isRequired,
+  onPostSelected: PropTypes.func.isRequired
 };
 // author_flair_text
-function Post({ title, numComments, author, ups }) {
+function Post({ id, title, numComments, author, ups, onPostSelected }) {
   return (
-    <PostContainer>
+    <PostContainer onClick={() => onPostSelected(id)}>
       <UpvotesContainer>{ups}</UpvotesContainer>
       <PostBodyContainer>
         <PostAuthorAndPostingDate>
