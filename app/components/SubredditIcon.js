@@ -57,7 +57,7 @@ function SubredditIcon({
 
   if (selected) {
     style = {
-      backgroundColor: 'gray'
+      backgroundColor: 'rgba(135, 138, 140, 0.2)'
     };
   }
   return (
