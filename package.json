@@ -266,7 +266,7 @@
   "browserslist": "electron 1.6",
   "husky": {
     "hooks": {
-      "pre-commit": ""
+      "pre-commit": "lint-staged"
     }
   }
 }
