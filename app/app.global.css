@@ -104,6 +104,8 @@ body {
   height: 100vh;
   font-family: 'CircularStd', Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
+  color: white;
+  background-color: #dae0e6;
 }
 
 h2 {
@@ -140,7 +142,8 @@ a:hover {
   width: 78px;
   height: 100vh;
   background-color: white;
-  /*padding: 1em;*/
+
+  /* padding: 1em; */
   transition: 0.3s;
   display: flex;
   flex-direction: column;
@@ -180,11 +183,6 @@ a:hover {
   min-height: 70px;
 }
 
-body {
-  color: white;
-  background-color: #cbc9c9;
-}
-
 .nav-clickable {
   cursor: pointer;
 }
@@ -210,9 +208,9 @@ body {
 }
 
 .subreddit-posts {
-  overflow: auto;
   width: 100%;
-  /*background-color: #929aa0;*/
+
+  /* background-color: #929aa0; */
   background-color: #dae0e6;
 }
 
