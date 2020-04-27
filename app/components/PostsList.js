@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SubredditHeader from './SubredditHeader';
+import styled from 'styled-components';
+import Post from './Post';
 
 PostsList.propTypes = {
   selectedSubreddit: PropTypes.string.isRequired,
@@ -8,6 +9,14 @@ PostsList.propTypes = {
   downloadedPosts: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired
 };
+
+const PostsFlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+`;
 
 function PostsList({ selectedSubreddit, downloadedPosts, loading }) {
   if (loading) {
@@ -19,12 +28,11 @@ function PostsList({ selectedSubreddit, downloadedPosts, loading }) {
     return <h1> Select a subreddit from the side.</h1>;
   }
   const posts = downloadedPosts.data.children.map(subreddit => {
-    return <li key={subreddit.data.id}>{subreddit.data.title}</li>;
+    return <Post key={subreddit.data.id} title={subreddit.data.title} />;
   });
   return (
     <div className="subreddit-posts">
-      <SubredditHeader selectedSubreddit={selectedSubreddit} />
-      <ul>{posts}</ul>
+      <PostsFlexContainer>{posts}</PostsFlexContainer>
     </div>
   );
 }

@@ -56,6 +56,9 @@ const SubredditTitle = styled.h1`
 `;
 
 function SubredditHeader({ selectedSubreddit }) {
+  if (!selectedSubreddit) {
+    return null;
+  }
   return (
     <HeaderContainer>
       <SubredditTopBanner />

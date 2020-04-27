@@ -1,15 +1,24 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+
 import NavContainer from './NavContainer';
 import { fetchSubreddits } from '../actions/subreddits';
 import SubredditContainer from './SubredditContainer';
+import SubredditHeaderContainer from './SubredditHeaderContainer';
 
 function mapDispatchToProps(dispatch) {
   return {
     loadSubreddits: () => dispatch(fetchSubreddits())
   };
 }
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 
 // eslint-disable-next-line react/prop-types
 function App({ loadSubreddits }) {
@@ -25,7 +34,10 @@ function App({ loadSubreddits }) {
           <h1>Select a subreddit from the side.</h1>
         </Route>
         <Route path="/r/:subreddit">
-          <SubredditContainer />
+          <FlexContainer>
+            <SubredditHeaderContainer />
+            <SubredditContainer />
+          </FlexContainer>
         </Route>
         <Route path="/r/:subreddit/:post">
           <h1>r/subreddit/post</h1>
