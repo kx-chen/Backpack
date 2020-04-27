@@ -20,6 +20,7 @@ const FlexContainer = styled.div`
   flex-direction: column;
   width: 100%;
   overflow: auto;
+  position: relative;
 `;
 
 // eslint-disable-next-line react/prop-types
