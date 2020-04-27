@@ -219,6 +219,7 @@ a:hover {
   position: absolute;
   transition: left 0.3s ease 0s;
   bottom: 20px;
+  z-index: 1;
 }
 
 .flex {
