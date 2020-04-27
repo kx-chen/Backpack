@@ -1,3 +1,6 @@
+import fs from 'fs-extra';
+import { getDataPathForPost } from '../helpers/utils';
+
 export const SELECT_POST = 'SELECT_POST';
 export const LOAD_POST_SUCCESS = 'LOAD_POST_SUCCESS';
 export const LOAD_POST_START = 'LOAD_POST_START';
@@ -31,8 +34,20 @@ export function closePostOverlay() {
   };
 }
 
-export function fetchPostById(id) {
+export function fetchPostById(id, selectedSubreddit) {
   return dispatch => {
-    dispatch(postSelected(id));
+    return new Promise(resolve => {
+      dispatch(loadPostsStart());
+
+      getPostFromStorage(id, selectedSubreddit)
+        .then(res => resolve(res))
+        .catch(err => console.log(err));
+    });
   };
+}
+
+export function getPostFromStorage(id, selectedSubreddit) {
+  const postPath = getDataPathForPost(selectedSubreddit, id);
+
+  return fs.readJSON(postPath);
 }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PostDetail from '../components/PostDetail';
-import { closePostOverlay } from '../actions/posts';
+import { closePostOverlay, fetchPostById } from '../actions/posts';
 
 function mapStateToProps(state) {
   return {
@@ -14,7 +14,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onClosePostOverlay: () => dispatch(closePostOverlay())
+    onClosePostOverlay: () => dispatch(closePostOverlay()),
+    fetchPostById: (id, selectedSubreddit) =>
+      dispatch(fetchPostById(id, selectedSubreddit))
   };
 }
 
