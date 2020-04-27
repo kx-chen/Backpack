@@ -211,6 +211,9 @@ body {
 
 .subreddit-posts {
   overflow: auto;
+  width: 100%;
+  /*background-color: #929aa0;*/
+  background-color: #dae0e6;
 }
 
 .sidenav-arrow {

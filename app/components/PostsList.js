@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SubredditHeader from './SubredditHeader';
 
 PostsList.propTypes = {
   selectedSubreddit: PropTypes.string.isRequired,
@@ -22,7 +23,7 @@ function PostsList({ selectedSubreddit, downloadedPosts, loading }) {
   });
   return (
     <div className="subreddit-posts">
-      {selectedSubreddit}
+      <SubredditHeader selectedSubreddit={selectedSubreddit} />
       <ul>{posts}</ul>
     </div>
   );
