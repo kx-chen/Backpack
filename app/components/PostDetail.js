@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import ReactHtmlParser from 'react-html-parser';
 import Comment from './Comment';
 
 PostDetail.propTypes = {
@@ -32,7 +33,7 @@ const Overlay = styled.div`
 const PostDetailContainer = styled.div`
   height: 100vh;
   min-height: 100%;
-  width: 80%;
+  width: 50%;
   background-color: #dae0e6;
   color: black;
   cursor: auto;
@@ -47,9 +48,15 @@ const PostDetailInner = styled.div`
 
 const CommentsContainer = styled.div`
   background-color: #dae0e6;
-  border-radius: 4px;
   padding-bottom: 30px;
 `;
+
+const Title = styled.div`
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+  font-weight: 600;
+`;
+
 function PostDetail({
   selectedPostId,
   postOverlayOpen,
@@ -63,7 +70,8 @@ function PostDetail({
 
   const [postData, setPostData] = useState('');
   let comments;
-  let title = null;
+  let title;
+  let text = null;
 
   useEffect(() => {
     fetchPostById(selectedPostId, selectedSubreddit)
@@ -81,18 +89,27 @@ function PostDetail({
           body={comment.data.body}
           replies={comment.data.replies}
           level={1}
+          author={comment.data.author}
+          ups={comment.data.ups}
         />
       );
     });
     title = postData[0].data.children[0].data.title;
+    text = postData[0].data.children[0].data.selftext_html;
   }
 
   return (
     <Overlay onClick={() => onClosePostOverlay()}>
       <PostDetailContainer onClick={e => e.stopPropagation()}>
-        <PostDetailInner>{title}</PostDetailInner>
         <CommentsContainer>
-          <PostDetailInner>{comments}</PostDetailInner>
+          <PostDetailInner>
+            <Title>{title}</Title>
+            <div>{ReactHtmlParser(ReactHtmlParser(text))}</div>
+          </PostDetailInner>
+          <PostDetailInner>
+            <hr />
+            {comments}
+          </PostDetailInner>
         </CommentsContainer>
       </PostDetailContainer>
     </Overlay>

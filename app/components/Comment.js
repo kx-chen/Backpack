@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 Comment.propTypes = {
   body: PropTypes.string.isRequired,
-  // points: PropTypes.string.isRequired,
-  // posted_by: PropTypes.string.isRequired,
+  ups: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
   // time_posted_utc: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   replies: PropTypes.object.isRequired,
@@ -17,8 +17,10 @@ const CommentFlexContainer = styled.div`
   overflow: auto;
   flex-direction: column;
   word-break: break-word;
-  margin: 10px;
-  padding-left 10px;
+`;
+
+const CommentBody = styled.p`
+  margin-bottom: 1rem;
 `;
 
 const CommentInnerContainer = styled.div`
@@ -33,7 +35,31 @@ const Thing = styled.span`
   width: 3px;
 `;
 
-function Comment({ body, replies, level }) {
+const VerticalStackingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const HorizontalStackingContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  // padding-bottom: 10px;
+`;
+
+// TODO: extract these
+const Upvotes = styled.span`
+  margin-right: 10px;
+  color: gray;
+  // padding-top: 10px;
+`;
+
+const Author = styled.span`
+  font-size: 0.8rem;
+  margin-right: 10px;
+  // padding-top: 10px;
+`;
+
+function Comment({ body, replies, level, author, ups }) {
   let replyComments = null;
   if (replies) {
     replyComments = replies.data.children.map(comment => {
@@ -43,6 +69,8 @@ function Comment({ body, replies, level }) {
           body={comment.data.body}
           level={levelIncreased}
           replies={comment.data.replies}
+          author={comment.data.author}
+          ups={comment.data.ups}
         />
       );
     });
@@ -52,11 +80,26 @@ function Comment({ body, replies, level }) {
     return null;
   }
 
+  const Things = [];
+
+  for (let i = 0; i < level; i += 1) {
+    if (i !== 0) {
+      Things.push(<Thing />);
+    }
+  }
+
   return (
     <CommentFlexContainer>
       <CommentInnerContainer>
-        <Thing />
-        {body}
+        {Things}
+        <VerticalStackingContainer>
+          <HorizontalStackingContainer>
+            <Author>{author}</Author>
+            <Upvotes>{ups} points</Upvotes>
+          </HorizontalStackingContainer>
+          <CommentBody>{body}</CommentBody>
+        </VerticalStackingContainer>
+        <hr />
       </CommentInnerContainer>
       {replyComments || null}
     </CommentFlexContainer>
