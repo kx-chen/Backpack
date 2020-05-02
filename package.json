@@ -1,6 +1,6 @@
 {
-  "name": "reddit-offline-desktop",
-  "productName": "Reddit Offline Desktop",
+  "name": "backpack-reader",
+  "productName": "backpack-reader",
   "version": "0.0.1",
   "description": "",
   "scripts": {
@@ -56,7 +56,7 @@
     ]
   },
   "build": {
-    "productName": "Reddit Offline Desktop",
+    "productName": "Backpack Reader",
     "appId": "com.kaixingchen.offline",
     "files": [
       "dist/",

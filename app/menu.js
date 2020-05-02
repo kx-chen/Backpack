@@ -45,17 +45,17 @@ export default class MenuBuilder {
 
   buildDarwinTemplate() {
     const subMenuAbout = {
-      label: 'Reddit Offline Desktop',
+      label: 'Backpack Reader',
       submenu: [
         {
-          label: 'About Reddit Offline Desktop',
+          label: 'About Backpack Reader',
           selector: 'orderFrontStandardAboutPanel:'
         },
         { type: 'separator' },
         { label: 'Services', submenu: [] },
         { type: 'separator' },
         {
-          label: 'Hide ElectronReact',
+          label: 'Hide Backpack Reader',
           accelerator: 'Command+H',
           selector: 'hide:'
         },
