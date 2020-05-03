@@ -1,6 +1,10 @@
-import fetch from 'node-fetch';
 import fs from 'fs-extra';
-import { getDataPathForPost, getDataPathForSubreddit } from './utils';
+import needle from 'needle';
+import {
+  getDataPathForIcon,
+  getDataPathForPost,
+  getDataPathForSubreddit
+} from './utils';
 
 export async function downloadSubredditJSON(name) {
   return fetch(`https://reddit.com/r/${name}.json?limit=50`)
@@ -50,4 +54,22 @@ export function fetchSubredditPosts(selectedSubreddit) {
   const userDataPath = getDataPathForSubreddit(selectedSubreddit);
 
   return fs.readJson(userDataPath);
+}
+
+export function downloadSubredditIcon(subreddit) {
+  return fetch(`https://reddit.com/r/${subreddit}/about.json`)
+    .then(res => res.json())
+    .then(res => fetchAndSaveIcon(res.data.community_icon, subreddit))
+    .catch(err => console.error(err));
+}
+
+async function fetchAndSaveIcon(iconUrl, subreddit) {
+  const fileStream = fs.createWriteStream(getDataPathForIcon(subreddit));
+
+  needle
+    .get(iconUrl)
+    .pipe(fileStream)
+    .on('done', () => {
+      console.log('Download success!');
+    });
 }
