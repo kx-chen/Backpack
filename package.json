@@ -243,6 +243,7 @@
     "fs-extra": "^9.0.0",
     "history": "^4.10.1",
     "jquery": "^3.4.1",
+    "needle": "^2.4.1",
     "node-fetch": "^2.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

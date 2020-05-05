@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
+import { getDataPathForIcon } from '../helpers/utils';
 
 SubredditHeader.propTypes = {
   selectedSubreddit: PropTypes.string.isRequired
@@ -59,14 +60,16 @@ function SubredditHeader({ selectedSubreddit }) {
   if (!selectedSubreddit) {
     return null;
   }
+
+  const subredditLogoPath = getDataPathForIcon(selectedSubreddit);
   return (
     <HeaderContainer>
       <SubredditTopBanner />
       <SubredditTitleContainer>
         <SubredditLogo
-          alt="logo for subreddit"
+          alt="logo"
           className="nav-logo"
-          src="https://styles.redditmedia.com/t5_2sdpm/styles/communityIcon_u6zl61vcy9511.png"
+          src={subredditLogoPath}
         />
         <HeaderContainer>
           <SubredditTitle>{selectedSubreddit}</SubredditTitle>

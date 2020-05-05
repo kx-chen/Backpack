@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import checkmark from '../../resources/check-circle.svg';
+import { getDataPathForIcon } from '../helpers/utils';
 
 SubredditIcon.propTypes = {
   name: PropTypes.string.isRequired,
@@ -19,6 +20,7 @@ function SubredditIcon({
   downloadSubreddit
 }) {
   let subredditName = <span className="subreddit-name">{`r/${name}`}</span>;
+  const subredditIconPath = getDataPathForIcon(name);
 
   let downloadStatusDisplay = (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
@@ -70,9 +72,10 @@ function SubredditIcon({
       >
         <div>
           <img
-            alt="logo for subreddit"
+            alt="logo"
             className="nav-logo"
-            src="https://styles.redditmedia.com/t5_2sdpm/styles/communityIcon_u6zl61vcy9511.png"
+            src={subredditIconPath}
+            height="50"
           />
         </div>
         {subredditName}

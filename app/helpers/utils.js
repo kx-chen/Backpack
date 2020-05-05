@@ -18,6 +18,15 @@ export function getDataPathForPost(selectedSubreddit, id) {
   return userDataPath;
 }
 
+export function getDataPathForIcon(selectedSubreddit) {
+  let userDataPath = app
+    ? app.getPath('userData')
+    : remote.app.getPath('userData');
+
+  userDataPath += `/reddit-offline/${selectedSubreddit}/${selectedSubreddit}.png`;
+  return userDataPath;
+}
+
 export function getDataPath() {
   return null;
 }

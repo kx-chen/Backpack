@@ -1,5 +1,6 @@
 import {
   downloadSubredditJSON,
+  downloadSubredditIcon,
   downloadSubredditPosts,
   fetchSubredditPosts,
   saveSubredditJson
@@ -33,6 +34,7 @@ export function triggerDownloadSubredditStart(selectedSubreddit) {
     downloadSubredditJSON(selectedSubreddit)
       .then(res => saveSubredditJson(res, selectedSubreddit, userDataPath))
       .then(res => downloadSubredditPosts(res, selectedSubreddit))
+      .then(() => downloadSubredditIcon(selectedSubreddit))
       .then(() => dispatch(downloadSubredditsSuccess()))
       .then(() => dispatch(subredditSelected(selectedSubreddit)))
       .catch(err => console.error(err));
@@ -70,6 +72,7 @@ export function subredditSelected(subreddit) {
     dispatch(loadSubredditPostsStart(subreddit));
     fetchSubredditPosts(subreddit)
       .then(res => dispatch(loadSubredditsPostsSuccess(res)))
+      .then(() => dispatch(fetchSubreddits()))
       .catch(err => console.error(err));
   };
 }
