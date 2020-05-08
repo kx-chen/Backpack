@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SubredditIcon from './SubredditIcon';
 import cog from '../../resources/cog.svg';
-import search from '../../resources/search.svg';
 import arrow from '../../resources/arrow-circle-left.svg';
+import SubredditSearch from './SubredditSearch';
 
 Nav.propTypes = {
   onMenuChange: PropTypes.func.isRequired,
@@ -66,8 +66,8 @@ function Nav({
 
   return (
     <nav className="sidebar" style={sidebarStyle}>
-      <div className="nav-item search">
-        <img alt="search" src={search} height="27" className="nav-clickable" />
+      <div className="search">
+        <SubredditSearch expanded={open} />
       </div>
       <div>{subredditsList}</div>
       <div className="nav-item--bottom">
