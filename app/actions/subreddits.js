@@ -97,6 +97,9 @@ function getAllSubreddits() {
     },
     {
       name: 'vancouver'
+    },
+    {
+      name: 'cscareerquestions'
     }
   ];
 }
