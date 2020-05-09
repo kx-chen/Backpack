@@ -24,13 +24,13 @@ function Nav({
 }) {
   let width = '78px';
   if (open) {
-    width = '200px';
+    width = '270px';
   }
 
   let left = '85px';
   let transform = 'rotate(180deg)';
   if (open) {
-    left = '210px';
+    left = '280px';
     transform = 'rotate(0deg)';
   }
 
