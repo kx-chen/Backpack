@@ -1,4 +1,3 @@
-// @flow
 import {
   LOAD_POST_START,
   LOAD_POST_SUCCESS,
