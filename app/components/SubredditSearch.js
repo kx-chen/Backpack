@@ -14,8 +14,10 @@ const SearchInput = styled.input`
 
 const SearchWrapper = styled.div`
   display: flex;
-  border: 1px solid gray;
-  border-radius: 24px;
+  flex-direction: column;
+  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+  border-radius: 10px;
+  padding: 5px;
 `;
 
 const SearchLabel = styled.label`
@@ -27,13 +29,33 @@ const SearchImage = styled.div`
   margin: 10px;
 `;
 
+const SearchInputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  border-radius: 24px;
+`;
+
+const AutocompleteWrapper = styled.div`
+  position: relative;
+`;
+
 function SubredditSearch({ expanded }) {
   let searchInput = (
     <SearchWrapper>
-      <SearchLabel htmlFor="subreddit-search">
-        <img alt="search" src={search} height="18" className="nav-clickable" />
-      </SearchLabel>
-      <SearchInput id="subreddit-search" />
+      <SearchInputWrapper>
+        <SearchLabel htmlFor="subreddit-search">
+          <img
+            alt="search"
+            src={search}
+            height="18"
+            className="nav-clickable"
+          />
+        </SearchLabel>
+        <SearchInput id="subreddit-search" />
+      </SearchInputWrapper>
+      <AutocompleteWrapper>
+        <p>test</p>
+      </AutocompleteWrapper>
     </SearchWrapper>
   );
   if (!expanded) {
