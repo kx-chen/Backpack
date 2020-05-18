@@ -233,3 +233,14 @@ a:hover {
 .flex {
   display: flex;
 }
+
+.react-autosuggest__input {
+  padding-top: 10px;
+  margin-left: 20px;
+  border: none;
+}
+
+.react-autosuggest__input:focus {
+  outline: none;
+  border: none;
+}

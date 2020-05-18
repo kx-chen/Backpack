@@ -67,7 +67,7 @@ async function fetchAndSaveIcon(iconUrl, subreddit) {
   const fileStream = fs.createWriteStream(getDataPathForIcon(subreddit));
 
   needle
-    .get(iconUrl)
+    .get(iconUrl.split('?')[0])
     .pipe(fileStream)
     .on('done', () => {
       console.log('Download success!');
