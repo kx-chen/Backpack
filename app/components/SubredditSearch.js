@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import Autosuggest from 'react-autosuggest';
+import { debounce } from 'debounce';
 import search from '../../resources/search.svg';
 
-const SearchInput = styled.input`
-  margin: 10px;
-  border: none;
-  background-color: transparent;
-  width: 80%;
-  :focus {
-    outline: none;
-  }
+const getSuggestions = async value => {
+  return fetch(`https://www.reddit.com/subreddits/search.json?q=${value.value}`)
+    .then(res => res.json())
+    .then(res => res.data.children)
+    .catch(err => {
+      throw err;
+    });
+};
+
+const SearchResult = styled.p`
+  color: black;
 `;
+
+const renderSuggestion = suggestion => (
+  <SearchResult>{suggestion.data.display_name}</SearchResult>
+);
+
+const getSuggestionValue = suggestion => suggestion.data.display_name;
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -35,11 +47,25 @@ const SearchInputWrapper = styled.div`
   border-radius: 24px;
 `;
 
-const AutocompleteWrapper = styled.div`
-  position: relative;
-`;
-
 function SubredditSearch({ expanded }) {
+  const [suggestions, setSuggestions] = useState([]);
+  const [value, setValue] = useState('');
+
+  const onSuggestionsFetchRequested = async searchQuery => {
+    console.log('called', searchQuery);
+    setSuggestions(await getSuggestions(searchQuery));
+  };
+  const onSuggestionsFetchRequestedDebounce = debounce(
+    onSuggestionsFetchRequested,
+    1000
+  );
+
+  const inputProps = {
+    placeholder: 'Type a subreddit.',
+    value,
+    onChange: (event, { newValue }) => setValue(newValue)
+  };
+
   let searchInput = (
     <SearchWrapper>
       <SearchInputWrapper>
@@ -51,11 +77,16 @@ function SubredditSearch({ expanded }) {
             className="nav-clickable"
           />
         </SearchLabel>
-        <SearchInput id="subreddit-search" />
+        <Autosuggest
+          id="subreddit-search"
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={onSuggestionsFetchRequestedDebounce}
+          onSuggestionsClearRequested={() => setSuggestions([])}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+          inputProps={inputProps}
+        />
       </SearchInputWrapper>
-      <AutocompleteWrapper>
-        <p>test</p>
-      </AutocompleteWrapper>
     </SearchWrapper>
   );
   if (!expanded) {

@@ -234,6 +234,7 @@
     "bootstrap": "^4.4.1",
     "connected-react-router": "^6.6.1",
     "core-js": "^3.5.0",
+    "debounce": "^1.2.0",
     "devtron": "^1.4.0",
     "electron-debug": "^3.0.1",
     "electron-log": "^4.0.0",
@@ -245,6 +246,7 @@
     "node-fetch": "^2.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-autosuggest": "^10.0.2",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-hot-loader": "^4.12.18",
@@ -256,7 +258,10 @@
     "redux-thunk": "^2.3.0",
     "request": "^2.88.0",
     "source-map-support": "^0.5.16",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "sweetalert2": "^9.10.13",
+    "sweetalert2-react-content": "^3.0.1",
+    "throttle-debounce": "^2.1.0"
   },
   "devEngines": {
     "node": ">=7.x",
