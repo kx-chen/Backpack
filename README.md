@@ -1,6 +1,6 @@
 # Reddit Offline Desktop
 
-[![Build Status](https://travis-ci.com/kx-chen/reddit-offline-desktop.svg?token=shUduPKcLXQRPp5hZihq&branch=master)](https://travis-ci.com/kx-chen/reddit-offline-desktop)
+[![Build Status](https://travis-ci.com/kx-chen/Backpack.svg?token=shUduPKcLXQRPp5hZihq&branch=master)](https://travis-ci.com/kx-chen/reddit-offline-desktop)
 
 ## Install
 
