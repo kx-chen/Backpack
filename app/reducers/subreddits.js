@@ -10,7 +10,7 @@ import {
 const initialState = {
   subreddits: [],
   loading_subreddits: true,
-  selected_subreddit: null,
+  selected_subreddit: '',
   downloading_subreddit: false,
   downloaded_posts: []
 };

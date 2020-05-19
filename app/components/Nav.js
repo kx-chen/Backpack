@@ -81,6 +81,7 @@ function Nav({
             className="nav-clickable sidenav-arrow"
             style={arrowStyle}
             onClick={() => onMenuChange(open)}
+            id="open-close-menu"
           />
         </div>
       </div>

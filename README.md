@@ -1,6 +1,16 @@
-# Reddit Offline Desktop
+# Backpack Reader
 
 [![Build Status](https://travis-ci.com/kx-chen/Backpack.svg?token=shUduPKcLXQRPp5hZihq&branch=master)](https://travis-ci.com/kx-chen/reddit-offline-desktop)
+
+Backpack Reader is a desktop app for downloading and reading Reddit while offline.
+
+![Dashboard view](resources/main.png?raw=true 'Dashboard view')
+
+![Sidebar shrunk](resources/sidebar.png?raw=true 'Shrunk sidebar')
+
+![Search for subreddit](resources/search.png?raw=true 'Search for subreddit')
+
+![Post detail](resources/post.png?raw=true 'Post detail')
 
 ## Install
 
@@ -14,7 +24,7 @@ $ yarn
 
 ## Starting Development
 
-Start the app in the `dev` environment. This starts the renderer process in [**hot-module-replacement**](https://webpack.js.org/guides/hmr-react/) mode and starts a webpack dev server that sends hot updates to the renderer process:
+Start the app in the `dev` environment.
 
 ```bash
 $ yarn dev
@@ -27,3 +37,38 @@ To package apps for the local platform:
 ```bash
 $ yarn package
 ```
+
+### Running Tests
+
+This project uses Jest as the test runner.
+
+`$ yarn test`
+
+### End to End Tests
+
+Coming soon.
+
+## Code Structure/Tech Stack
+
+`src/js/`
+
+Main JavaScript code for Backpack Reader. Components are built with React.
+
+Some libraries/technologies/build tools this project uses:
+
+- React
+- Redux
+- Webpack
+- Travis CI
+- Babel
+- Jest
+
+## Contributions
+
+All contributions, pull requests, and feedback welcome! Roasts of all kinds welcome
+
+## Future Plans
+
+- [ ] End to End tests.
+
+And more!
