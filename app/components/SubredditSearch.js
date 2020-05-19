@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
-
 import Autosuggest from 'react-autosuggest';
 import { debounce } from 'debounce';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
+
 import search from '../../resources/search.svg';
+import SearchResult from './SearchResult';
 
 const getSuggestions = async value => {
   return fetch(`https://www.reddit.com/subreddits/search.json?q=${value.value}`)
@@ -14,15 +17,23 @@ const getSuggestions = async value => {
     });
 };
 
-const SearchResult = styled.p`
-  color: black;
-`;
-
 const renderSuggestion = suggestion => (
-  <SearchResult>{suggestion.data.display_name}</SearchResult>
+  <SearchResult name={suggestion.data.display_name} />
 );
 
 const getSuggestionValue = suggestion => suggestion.data.display_name;
+
+const onSuggestionSelected = (event, { suggestionValue }) => {
+  const MySwal = withReactContent(Swal);
+
+  MySwal.fire({
+    position: 'top-end',
+    icon: 'question',
+    title: `Add r/${suggestionValue}?`,
+    showConfirmButton: true,
+    backdrop: false
+  });
+};
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -52,12 +63,11 @@ function SubredditSearch({ expanded }) {
   const [value, setValue] = useState('');
 
   const onSuggestionsFetchRequested = async searchQuery => {
-    console.log('called', searchQuery);
     setSuggestions(await getSuggestions(searchQuery));
   };
-  const onSuggestionsFetchRequestedDebounce = debounce(
-    onSuggestionsFetchRequested,
-    1000
+  const onSuggestionsFetchRequestedDebounce = useCallback(
+    debounce(onSuggestionsFetchRequested, 1000),
+    []
   );
 
   const inputProps = {
@@ -84,6 +94,7 @@ function SubredditSearch({ expanded }) {
           onSuggestionsClearRequested={() => setSuggestions([])}
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
+          onSuggestionSelected={onSuggestionSelected}
           inputProps={inputProps}
         />
       </SearchInputWrapper>

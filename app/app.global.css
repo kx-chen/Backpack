@@ -165,6 +165,7 @@ a:hover {
   bottom: 0;
   left: 0;
   overflow: hidden;
+  height: 100vh;
 }
 
 .nav-item {
