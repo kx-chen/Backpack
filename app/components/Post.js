@@ -55,11 +55,10 @@ Post.propTypes = {
   title: PropTypes.string.isRequired,
   numComments: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  // created_utc: PropTypes.string.isRequired,
   ups: PropTypes.string.isRequired,
   onPostSelected: PropTypes.func.isRequired
 };
-// author_flair_text
+
 function Post({ id, title, numComments, author, ups, onPostSelected }) {
   return (
     <PostContainer onClick={() => onPostSelected(id)}>

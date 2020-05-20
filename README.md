@@ -18,7 +18,7 @@ First, clone the repo via git.
 And then install the dependencies with yarn.
 
 ```bash
-$ cd reddit-offline
+$ cd Backpack
 $ yarn
 ```
 
@@ -50,7 +50,7 @@ Coming soon.
 
 ## Code Structure/Tech Stack
 
-`src/js/`
+`app/`
 
 Main JavaScript code for Backpack Reader. Components are built with React.
 

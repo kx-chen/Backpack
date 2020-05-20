@@ -29,7 +29,6 @@ function PostsList({
     return <h1>Loading...</h1>;
   }
 
-  // TODO: hacky!
   if (!selectedSubreddit) {
     return <h1> Select a subreddit from the side.</h1>;
   }

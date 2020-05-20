@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import SubredditIcon from './SubredditIcon';
 import cog from '../../resources/cog.svg';
 import arrow from '../../resources/arrow-circle-left.svg';
@@ -23,15 +24,13 @@ function Nav({
   downloadSubreddit
 }) {
   let width = '78px';
-  if (open) {
-    width = '270px';
-  }
-
   let left = '85px';
   let transform = 'rotate(180deg)';
+
   if (open) {
     left = '280px';
     transform = 'rotate(0deg)';
+    width = '270px';
   }
 
   const arrowStyle = {

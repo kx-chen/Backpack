@@ -28,7 +28,7 @@ const CommentInnerContainer = styled.div`
   font-size: 0.9em;
 `;
 
-const Thing = styled.span`
+const NestedComment = styled.span`
   padding: 10px;
   border-left: 2px solid rgb(237, 239, 241);
   width: 3px;
@@ -42,20 +42,16 @@ const VerticalStackingContainer = styled.div`
 const HorizontalStackingContainer = styled.div`
   display: flex;
   flex-direction: row;
-  // padding-bottom: 10px;
 `;
 
-// TODO: extract these
 const Upvotes = styled.span`
   margin-right: 10px;
   color: gray;
-  // padding-top: 10px;
 `;
 
 const Author = styled.span`
   font-size: 0.8rem;
   margin-right: 10px;
-  // padding-top: 10px;
 `;
 
 function Comment({ body, replies, level, author, ups }) {
@@ -79,18 +75,18 @@ function Comment({ body, replies, level, author, ups }) {
     return null;
   }
 
-  const Things = [];
+  const nestedComments = [];
 
   for (let i = 0; i < level; i += 1) {
     if (i !== 0) {
-      Things.push(<Thing />);
+      nestedComments.push(<NestedComment />);
     }
   }
 
   return (
     <CommentFlexContainer>
       <CommentInnerContainer>
-        {Things}
+        {nestedComments}
         <VerticalStackingContainer>
           <HorizontalStackingContainer>
             <Author>{author}</Author>
