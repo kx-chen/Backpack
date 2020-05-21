@@ -2,9 +2,9 @@ import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 
 function displayError(message) {
-  const MySwal = withReactContent(Swal);
+  const error = withReactContent(Swal);
 
-  MySwal.fire({
+  error.fire({
     position: 'top-end',
     icon: 'error',
     title: 'Something went wrong.',
@@ -14,6 +14,28 @@ function displayError(message) {
   });
 }
 
-// Will add more errors later.
-// eslint-disable-next-line import/prefer-default-export
-export { displayError };
+function displayDownloadStartAlert() {
+  const downloadStart = withReactContent(Swal);
+
+  downloadStart.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Download started.',
+    showConfirmButton: true,
+    backdrop: false
+  });
+}
+
+function displayDownloadFinished() {
+  const downloadStart = withReactContent(Swal);
+
+  downloadStart.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Download success!',
+    showConfirmButton: true,
+    backdrop: false
+  });
+}
+
+export { displayError, displayDownloadStartAlert, displayDownloadFinished };

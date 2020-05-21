@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ReactImageFallback from 'react-image-fallback';
 import checkmark from '../../resources/check-circle.svg';
+import backupIcon from '../../resources/subreddit-fallback-icon.svg';
 import { getDataPathForIcon } from '../helpers/utils';
 
 SubredditIcon.propTypes = {
@@ -24,10 +26,11 @@ function SubredditIcon({
 
   let downloadStatusDisplay = (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
-    <img
+    <ReactImageFallback
       onClick={() => downloadSubreddit(name)}
       alt="download status"
       src={checkmark}
+      fallbackImage={backupIcon}
       height="20"
       className="nav-clickable download-status"
     />
@@ -42,9 +45,10 @@ function SubredditIcon({
 
     downloadStatusDisplay = (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
-      <img
+      <ReactImageFallback
         onClick={() => downloadSubreddit(name)}
         alt="download status"
+        fallbackImage={backupIcon}
         src={checkmark}
         height="20"
         className="nav-clickable download-status"

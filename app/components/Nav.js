@@ -12,7 +12,8 @@ Nav.propTypes = {
   onSubredditSelect: PropTypes.func.isRequired,
   selectedSubreddit: PropTypes.string.isRequired,
   subreddits: PropTypes.arrayOf(PropTypes.object).isRequired,
-  downloadSubreddit: PropTypes.func.isRequired
+  onDownloadSubreddit: PropTypes.func.isRequired,
+  onSaveNewSubreddit: PropTypes.func.isRequired
 };
 
 function Nav({
@@ -21,7 +22,8 @@ function Nav({
   onSubredditSelect,
   selectedSubreddit,
   subreddits,
-  downloadSubreddit
+  onDownloadSubreddit,
+  onSaveNewSubreddit
 }) {
   let width = '78px';
   let left = '85px';
@@ -48,7 +50,7 @@ function Nav({
       name={subreddit}
       open={open}
       onSelected={name => onSubredditSelect(name)}
-      downloadSubreddit={name => downloadSubreddit(name)}
+      downloadSubreddit={name => onDownloadSubreddit(name)}
       selected={subreddit === selectedSubreddit}
     />
   ));
@@ -66,7 +68,10 @@ function Nav({
   return (
     <nav className="sidebar" style={sidebarStyle}>
       <div className="search">
-        <SubredditSearch expanded={open} />
+        <SubredditSearch
+          expanded={open}
+          onSaveNewSubreddit={onSaveNewSubreddit}
+        />
       </div>
       <div>{subredditsList}</div>
       <div className="nav-item--bottom">

@@ -56,20 +56,25 @@ export function fetchSubredditPosts(selectedSubreddit) {
   return fs.readJson(userDataPath);
 }
 
-export function downloadSubredditIcon(subreddit) {
-  return fetch(`https://reddit.com/r/${subreddit}/about.json`)
-    .then(res => res.json())
-    .then(res => fetchAndSaveIcon(res.data.community_icon, subreddit))
-    .catch(err => console.error(err));
+export async function downloadSubredditIcon(subreddit) {
+  let res = await fetch(`https://reddit.com/r/${subreddit}/about.json`);
+  res = await res.json();
+  return fetchAndSaveIcon(
+    res.data.community_icon ? res.data.community_icon : res.data.icon_img,
+    subreddit
+  );
 }
 
 async function fetchAndSaveIcon(iconUrl, subreddit) {
   const fileStream = fs.createWriteStream(getDataPathForIcon(subreddit));
 
-  needle
-    .get(iconUrl.split('?')[0])
-    .pipe(fileStream)
-    .on('done', () => {
-      console.log('Download success!');
-    });
+  return new Promise(resolve => {
+    if (!iconUrl) {
+      resolve();
+    }
+    needle
+      .get(iconUrl.split('?')[0])
+      .pipe(fileStream)
+      .on('end', () => resolve());
+  });
 }

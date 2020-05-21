@@ -6,7 +6,7 @@ import {
   saveSubredditJson
 } from '../helpers/subreddit';
 import { subredditSelected } from './subreddits';
-import { displayError } from './error';
+import { displayDownloadFinished, displayDownloadStartAlert, displayError } from './error';
 
 export const DOWNLOAD_SUBREDDITS_SUCCESS = 'DOWNLOAD_SUBREDDITS_SUCCESS';
 export const DOWNLOAD_SUBREDDITS_START = 'DOWNLOAD_SUBREDDITS_START';
@@ -31,11 +31,13 @@ export function triggerDownloadSubredditStart(selectedSubreddit) {
   const userDataPath = getDataPathForSubreddit(selectedSubreddit);
   return dispatch => {
     dispatch(downloadSubredditStart(selectedSubreddit));
+    displayDownloadStartAlert();
 
     downloadSubredditJSON(selectedSubreddit)
       .then(res => saveSubredditJson(res, selectedSubreddit, userDataPath))
       .then(res => downloadSubredditPosts(res, selectedSubreddit))
       .then(() => downloadSubredditIcon(selectedSubreddit))
+      .then(() => displayDownloadFinished())
       .then(() => dispatch(downloadSubredditsSuccess()))
       .then(() => dispatch(subredditSelected(selectedSubreddit)))
       .catch(err => {

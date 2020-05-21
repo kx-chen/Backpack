@@ -2,11 +2,10 @@ import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import Autosuggest from 'react-autosuggest';
 import { debounce } from 'debounce';
-import withReactContent from 'sweetalert2-react-content';
-import Swal from 'sweetalert2';
 
 import search from '../../resources/search.svg';
 import SearchResult from './SearchResult';
+import { saveNewSubreddit } from '../actions/subreddits';
 
 const getSuggestions = async value => {
   return fetch(`https://www.reddit.com/subreddits/search.json?q=${value.value}`)
@@ -18,22 +17,12 @@ const getSuggestions = async value => {
 };
 
 const renderSuggestion = suggestion => (
-  <SearchResult name={suggestion.data.display_name} />
+  <SearchResult
+    name={suggestion.data.display_name}
+  />
 );
 
 const getSuggestionValue = suggestion => suggestion.data.display_name;
-
-const onSuggestionSelected = (event, { suggestionValue }) => {
-  const MySwal = withReactContent(Swal);
-
-  MySwal.fire({
-    position: 'top-end',
-    icon: 'question',
-    title: `Add r/${suggestionValue}?`,
-    showConfirmButton: true,
-    backdrop: false
-  });
-};
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -58,7 +47,7 @@ const SearchInputWrapper = styled.div`
   border-radius: 24px;
 `;
 
-function SubredditSearch({ expanded }) {
+function SubredditSearch({ expanded, onSaveNewSubreddit }) {
   const [suggestions, setSuggestions] = useState([]);
   const [value, setValue] = useState('');
 
@@ -69,6 +58,10 @@ function SubredditSearch({ expanded }) {
     debounce(onSuggestionsFetchRequested, 1000),
     []
   );
+
+  const onSuggestionSelected = (event, { suggestionValue }) => {
+    onSaveNewSubreddit(suggestionValue);
+  };
 
   const inputProps = {
     placeholder: 'Type a subreddit.',

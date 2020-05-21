@@ -86,6 +86,7 @@ function PostDetail({
     comments = postData[1].data.children.map(comment => {
       return (
         <Comment
+          key={comment.data.id}
           body={comment.data.body}
           replies={comment.data.replies}
           level={1}

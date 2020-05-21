@@ -42,6 +42,7 @@ export function fetchPostById(id, selectedSubreddit) {
 
       getPostFromStorage(id, selectedSubreddit)
         .then(res => resolve(res))
+        .then(() => dispatch(loadPostSuccess()))
         .catch(err => {
           displayError(err);
           console.error(err);
