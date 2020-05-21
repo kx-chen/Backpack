@@ -6,7 +6,6 @@ Comment.propTypes = {
   body: PropTypes.string.isRequired,
   ups: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
   replies: PropTypes.object.isRequired,
   level: PropTypes.number.isRequired
 };

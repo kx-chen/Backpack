@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
+
 import posts from './post';
 import sidenav from './sidenav';
 import subreddits from './subreddits';

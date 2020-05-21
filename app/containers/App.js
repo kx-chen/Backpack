@@ -23,7 +23,6 @@ const FlexContainer = styled.div`
   position: relative;
 `;
 
-// eslint-disable-next-line react/prop-types
 function App({ loadSubreddits }) {
   useEffect(() => {
     loadSubreddits();

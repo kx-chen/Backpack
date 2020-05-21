@@ -6,7 +6,11 @@ import {
   saveSubredditJson
 } from '../helpers/subreddit';
 import { subredditSelected } from './subreddits';
-import { displayDownloadFinished, displayDownloadStartAlert, displayError } from './error';
+import {
+  displayDownloadFinished,
+  displayDownloadStartAlert,
+  displayError
+} from './error';
 
 export const DOWNLOAD_SUBREDDITS_SUCCESS = 'DOWNLOAD_SUBREDDITS_SUCCESS';
 export const DOWNLOAD_SUBREDDITS_START = 'DOWNLOAD_SUBREDDITS_START';

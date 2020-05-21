@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import { Img } from 'react-image';
+
 import { getDataPathForIcon } from '../helpers/utils';
 import backupIcon from '../../resources/subreddit-fallback-icon.svg';
 

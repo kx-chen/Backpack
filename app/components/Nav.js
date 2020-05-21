@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import SubredditIcon from './SubredditIcon';
 import cog from '../../resources/cog.svg';
 import arrow from '../../resources/arrow-circle-left.svg';
 import SubredditSearch from './SubredditSearch';
-import styled from 'styled-components';
 
 const SubredditsListContainer = styled.div`
   overflow-y: auto;

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 import Post from './Post';
 
 PostsList.propTypes = {
   selectedSubreddit: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
   downloadedPosts: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   onPostSelected: PropTypes.func.isRequired

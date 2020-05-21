@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Img } from 'react-image';
+
 import checkmark from '../../resources/check-circle.svg';
 import backupIcon from '../../resources/subreddit-fallback-icon.svg';
 import { getDataPathForIcon } from '../helpers/utils';

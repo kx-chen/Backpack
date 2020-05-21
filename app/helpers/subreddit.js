@@ -39,7 +39,6 @@ async function downloadIndividualPost(id) {
 
 export function saveSubredditJson(data, selectedSubreddit, path) {
   // append the last updated date to the json
-  // eslint-disable-next-line no-param-reassign
   data.lastUpdated = new Date();
 
   return fs

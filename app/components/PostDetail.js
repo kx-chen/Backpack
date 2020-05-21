@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ReactHtmlParser from 'react-html-parser';
+
 import Comment from './Comment';
 
 PostDetail.propTypes = {
