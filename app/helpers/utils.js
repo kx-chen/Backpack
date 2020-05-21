@@ -28,5 +28,10 @@ export function getDataPathForIcon(selectedSubreddit) {
 }
 
 export function getDataPath() {
-  return null;
+  let userDataPath = app
+    ? app.getPath('userData')
+    : remote.app.getPath('userData');
+
+  userDataPath += '/reddit-offline/';
+  return userDataPath;
 }

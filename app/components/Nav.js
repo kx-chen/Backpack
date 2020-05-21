@@ -44,12 +44,12 @@ function Nav({
 
   const subredditsList = subreddits.map(subreddit => (
     <SubredditIcon
-      key={subreddit.name}
-      name={subreddit.name}
+      key={subreddit}
+      name={subreddit}
       open={open}
       onSelected={name => onSubredditSelect(name)}
       downloadSubreddit={name => downloadSubreddit(name)}
-      selected={subreddit.name === selectedSubreddit}
+      selected={subreddit === selectedSubreddit}
     />
   ));
 

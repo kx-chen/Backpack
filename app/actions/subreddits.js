@@ -1,11 +1,14 @@
+import fs from 'fs-extra';
 import { fetchSubredditPosts } from '../helpers/subreddit';
 import { displayError } from './error';
+import { getDataPath } from '../helpers/utils';
 
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
 export const LOAD_SUBREDDITS_POSTS_SUCCESS = 'LOAD_SUBREDDITS_POSTS_SUCCESS';
 export const LOAD_SUBREDDITS_SUCCESS = 'LOAD_SUBREDDITS_SUCCESS';
 export const LOAD_SUBREDDITS_START = 'LOAD_SUBREDDITS_START';
 
+// TODO: spice it up! naming is too related/difficult to read
 function loadSubredditsPostsSuccess(downloadedPosts) {
   return {
     type: LOAD_SUBREDDITS_POSTS_SUCCESS,
@@ -39,7 +42,6 @@ export function subredditSelected(subreddit) {
       });
   };
 }
-
 export function fetchSubreddits() {
   const subreddits = getAllSubreddits();
   return dispatch => {
@@ -47,22 +49,31 @@ export function fetchSubreddits() {
   };
 }
 
+// export const SAVE_NEW_SUBREDDIT_START = 'SAVE_NEW_SUBREDDIT_START';
+// export const SAVE_NEW_SUBREDDIT_SUCCESS = 'SAVE_NEW_SUBREDDIT_SUCCESS';
+// export const SAVE_NEW_SUBREDDIT_FAILURE = 'SAVE_NEW_SUBREDDIT_FAILURE';
+//
+// function saveSubredditStart() {
+//   return {
+//     type: SAVE_NEW_SUBREDDIT_START
+//   };
+// }
+//
+// function saveSubredditSuccess() {
+//   return {
+//     type: SAVE_NEW_SUBREDDIT_SUCCESS
+//   };
+// }
+//
+// function saveSubredditFailure() {
+//   return {
+//     type: SAVE_NEW_SUBREDDIT_FAILURE
+//   };
+// }
+
 function getAllSubreddits() {
-  return [
-    {
-      name: 'AskReddit'
-    },
-    {
-      name: 'UBC'
-    },
-    {
-      name: 'gtaonline'
-    },
-    {
-      name: 'vancouver'
-    },
-    {
-      name: 'cscareerquestions'
-    }
-  ];
+  const dataPath = getDataPath();
+  return fs.readdirSync(dataPath).filter(file => {
+    return fs.statSync(`${dataPath}/${file}`).isDirectory();
+  });
 }
