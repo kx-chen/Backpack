@@ -26,7 +26,6 @@ function SubredditIcon({
   const subredditIconPath = getDataPathForIcon(name);
 
   let downloadStatusDisplay = (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
     <Img
       onClick={() => downloadSubreddit(name)}
       alt="download status"
@@ -45,7 +44,6 @@ function SubredditIcon({
     );
 
     downloadStatusDisplay = (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
       <Img
         onClick={() => downloadSubreddit(name)}
         alt="download status"
@@ -68,7 +66,6 @@ function SubredditIcon({
   }
   return (
     <div className="nav-item" style={style}>
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
       <Link
         to={`/r/${name}`}
         className="nav-clickable flex"

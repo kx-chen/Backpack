@@ -35,14 +35,14 @@ export function subredditSelected(subreddit) {
     dispatch(loadSubredditPostsStart(subreddit));
     fetchSubredditPosts(subreddit)
       .then(res => dispatch(loadSubredditsPostsSuccess(res)))
-      .then(() => dispatch(fetchSubreddits()))
+      .then(() => dispatch(fetchDownloadedSubreddits()))
       .catch(err => {
         displayError(err);
         console.error(err);
       });
   };
 }
-export function fetchSubreddits() {
+export function fetchDownloadedSubreddits() {
   const subreddits = getAllSubreddits();
   return dispatch => {
     dispatch(loadSubredditsSuccess(subreddits));

@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import NavContainer from './NavContainer';
-import { fetchSubreddits } from '../actions/subreddits';
+import { fetchDownloadedSubreddits } from '../actions/subreddits';
 import SubredditContainer from './PostsContainer';
 import SubredditHeaderContainer from './SubredditHeaderContainer';
 import PostDetailContainer from './PostDetailContainer';
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadSubreddits: () => dispatch(fetchSubreddits())
+    loadSubreddits: () => dispatch(fetchDownloadedSubreddits())
   };
 }
 

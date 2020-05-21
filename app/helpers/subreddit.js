@@ -51,7 +51,6 @@ export function saveSubredditJson(data, selectedSubreddit, path) {
 
 export function fetchSubredditPosts(selectedSubreddit) {
   const userDataPath = getDataPathForSubreddit(selectedSubreddit);
-
   return fs.readJson(userDataPath);
 }
 
