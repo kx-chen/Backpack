@@ -55,6 +55,10 @@ const Author = styled.span`
 `;
 
 function Comment({ body, replies, level, author, ups }) {
+  if (!body) {
+    return null;
+  }
+
   let replyComments = null;
   if (replies) {
     replyComments = replies.data.children.map(comment => {
@@ -71,12 +75,7 @@ function Comment({ body, replies, level, author, ups }) {
     });
   }
 
-  if (!body) {
-    return null;
-  }
-
   const nestedComments = [];
-
   for (let i = 0; i < level; i += 1) {
     if (i !== 0) {
       nestedComments.push(<NestedComment />);

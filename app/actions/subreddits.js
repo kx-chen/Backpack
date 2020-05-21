@@ -1,45 +1,4 @@
-import {
-  downloadSubredditJSON,
-  downloadSubredditIcon,
-  downloadSubredditPosts,
-  fetchSubredditPosts,
-  saveSubredditJson
-} from '../helpers/subreddit';
-import { getDataPathForSubreddit } from '../helpers/utils';
-
-export const DOWNLOAD_SUBREDDITS_SUCCESS = 'DOWNLOAD_SUBREDDITS_SUCCESS';
-export const DOWNLOAD_SUBREDDITS_START = 'DOWNLOAD_SUBREDDITS_START';
-
-function downloadSubredditsSuccess() {
-  return {
-    type: DOWNLOAD_SUBREDDITS_SUCCESS,
-    downloading_subreddit: false,
-    downloading_subreddit_name: ''
-  };
-}
-
-function downloadSubredditStart(selectedSubreddit) {
-  return {
-    type: DOWNLOAD_SUBREDDITS_START,
-    downloading_subreddit: true,
-    downloading_subreddit_name: selectedSubreddit
-  };
-}
-
-export function triggerDownloadSubredditStart(selectedSubreddit) {
-  const userDataPath = getDataPathForSubreddit(selectedSubreddit);
-  return dispatch => {
-    dispatch(downloadSubredditStart(selectedSubreddit));
-
-    downloadSubredditJSON(selectedSubreddit)
-      .then(res => saveSubredditJson(res, selectedSubreddit, userDataPath))
-      .then(res => downloadSubredditPosts(res, selectedSubreddit))
-      .then(() => downloadSubredditIcon(selectedSubreddit))
-      .then(() => dispatch(downloadSubredditsSuccess()))
-      .then(() => dispatch(subredditSelected(selectedSubreddit)))
-      .catch(err => console.error(err));
-  };
-}
+import { fetchSubredditPosts } from '../helpers/subreddit';
 
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
 export const LOAD_SUBREDDITS_POSTS_SUCCESS = 'LOAD_SUBREDDITS_POSTS_SUCCESS';

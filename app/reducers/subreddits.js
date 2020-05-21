@@ -1,11 +1,13 @@
 import {
-  DOWNLOAD_SUBREDDITS_START,
-  DOWNLOAD_SUBREDDITS_SUCCESS,
   LOAD_SUBREDDITS_START,
   LOAD_SUBREDDITS_POSTS_SUCCESS,
   SELECT_SUBREDDIT,
   LOAD_SUBREDDITS_SUCCESS
 } from '../actions/subreddits';
+import {
+  DOWNLOAD_SUBREDDITS_START,
+  DOWNLOAD_SUBREDDITS_SUCCESS
+} from '../actions/downloader';
 
 const initialState = {
   subreddits: [],

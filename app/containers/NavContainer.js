@@ -1,10 +1,8 @@
 import { connect } from 'react-redux';
 import Nav from '../components/Nav';
 import { toggleMenu } from '../actions/sidenav';
-import {
-  subredditSelected,
-  triggerDownloadSubredditStart
-} from '../actions/subreddits';
+import { subredditSelected } from '../actions/subreddits';
+import { triggerDownloadSubredditStart } from '../actions/downloader';
 
 function mapDispatchToProps(dispatch) {
   return {
