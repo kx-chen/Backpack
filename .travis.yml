@@ -64,7 +64,7 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3; fi
 
 script:
-  - yarn package-ci
+#  - yarn package-ci
 #  - yarn lint
   # HACK: Temporarily ignore `yarn test` on linux
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn test; fi
