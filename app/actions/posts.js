@@ -1,5 +1,6 @@
 import fs from 'fs-extra';
 import { getDataPathForPost } from '../helpers/utils';
+import { displayError } from './error';
 
 export const SELECT_POST = 'SELECT_POST';
 export const LOAD_POST_SUCCESS = 'LOAD_POST_SUCCESS';
@@ -41,7 +42,10 @@ export function fetchPostById(id, selectedSubreddit) {
 
       getPostFromStorage(id, selectedSubreddit)
         .then(res => resolve(res))
-        .catch(err => console.log(err));
+        .catch(err => {
+          displayError(err);
+          console.error(err);
+        });
     });
   };
 }

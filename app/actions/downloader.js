@@ -6,6 +6,7 @@ import {
   saveSubredditJson
 } from '../helpers/subreddit';
 import { subredditSelected } from './subreddits';
+import { displayError } from './error';
 
 export const DOWNLOAD_SUBREDDITS_SUCCESS = 'DOWNLOAD_SUBREDDITS_SUCCESS';
 export const DOWNLOAD_SUBREDDITS_START = 'DOWNLOAD_SUBREDDITS_START';
@@ -37,6 +38,9 @@ export function triggerDownloadSubredditStart(selectedSubreddit) {
       .then(() => downloadSubredditIcon(selectedSubreddit))
       .then(() => dispatch(downloadSubredditsSuccess()))
       .then(() => dispatch(subredditSelected(selectedSubreddit)))
-      .catch(err => console.error(err));
+      .catch(err => {
+        displayError(err);
+        console.error(err);
+      });
   };
 }

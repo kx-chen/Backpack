@@ -1,4 +1,5 @@
 import { fetchSubredditPosts } from '../helpers/subreddit';
+import { displayError } from './error';
 
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
 export const LOAD_SUBREDDITS_POSTS_SUCCESS = 'LOAD_SUBREDDITS_POSTS_SUCCESS';
@@ -32,7 +33,10 @@ export function subredditSelected(subreddit) {
     fetchSubredditPosts(subreddit)
       .then(res => dispatch(loadSubredditsPostsSuccess(res)))
       .then(() => dispatch(fetchSubreddits()))
-      .catch(err => console.error(err));
+      .catch(err => {
+        displayError(err);
+        console.error(err);
+      });
   };
 }
 
