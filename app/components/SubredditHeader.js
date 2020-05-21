@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
+import { Img } from 'react-image';
 import { getDataPathForIcon } from '../helpers/utils';
+import backupIcon from '../../resources/subreddit-fallback-icon.svg';
 
 SubredditHeader.propTypes = {
   selectedSubreddit: PropTypes.string.isRequired
@@ -14,7 +16,7 @@ const HeaderContainer = styled.div`
   color: black;
 `;
 
-const SubredditLogo = styled.img`
+const SubredditLogo = styled(Img)`
   height: 80px;
   margin-left: 20px;
   margin-right: 20px;
@@ -69,7 +71,7 @@ function SubredditHeader({ selectedSubreddit }) {
         <SubredditLogo
           alt="logo"
           className="nav-logo"
-          src={subredditLogoPath}
+          src={[subredditLogoPath, backupIcon]}
         />
         <HeaderContainer>
           <SubredditTitle>{selectedSubreddit}</SubredditTitle>

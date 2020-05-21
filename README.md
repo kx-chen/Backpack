@@ -54,13 +54,10 @@ Coming soon.
 
 Main JavaScript code for Backpack Reader. Components are built with React.
 
-Some libraries/technologies/build tools this project uses:
+Tech Stack:
 
 - React
 - Redux
-- Webpack
-- Travis CI
-- Babel
 - Jest
 
 ## Contributions

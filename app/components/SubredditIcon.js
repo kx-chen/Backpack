@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ReactImageFallback from 'react-image-fallback';
+import { Img } from 'react-image';
 import checkmark from '../../resources/check-circle.svg';
 import backupIcon from '../../resources/subreddit-fallback-icon.svg';
 import { getDataPathForIcon } from '../helpers/utils';
@@ -26,7 +26,7 @@ function SubredditIcon({
 
   let downloadStatusDisplay = (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
-    <ReactImageFallback
+    <Img
       onClick={() => downloadSubreddit(name)}
       alt="download status"
       src={checkmark}
@@ -45,11 +45,10 @@ function SubredditIcon({
 
     downloadStatusDisplay = (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
-      <ReactImageFallback
+      <Img
         onClick={() => downloadSubreddit(name)}
         alt="download status"
-        fallbackImage={backupIcon}
-        src={checkmark}
+        src={[checkmark]}
         height="20"
         className="nav-clickable download-status"
         style={{ visibility: 'hidden', opacity: '0' }}
@@ -75,11 +74,11 @@ function SubredditIcon({
         onClick={() => onSelected(name)}
       >
         <div>
-          <img
+          <Img
             alt="logo"
             className="nav-logo"
-            src={subredditIconPath}
             height="50"
+            src={[subredditIconPath, backupIcon]}
           />
         </div>
         {subredditName}

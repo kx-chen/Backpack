@@ -5,6 +5,12 @@ import SubredditIcon from './SubredditIcon';
 import cog from '../../resources/cog.svg';
 import arrow from '../../resources/arrow-circle-left.svg';
 import SubredditSearch from './SubredditSearch';
+import styled from 'styled-components';
+
+const SubredditsListContainer = styled.div`
+  overflow-y: auto;
+  overflow-x: hidden;
+`;
 
 Nav.propTypes = {
   onMenuChange: PropTypes.func.isRequired,
@@ -73,7 +79,7 @@ function Nav({
           onSaveNewSubreddit={onSaveNewSubreddit}
         />
       </div>
-      <div>{subredditsList}</div>
+      <SubredditsListContainer>{subredditsList}</SubredditsListContainer>
       <div className="nav-item--bottom">
         {settingsButton}
         <div>

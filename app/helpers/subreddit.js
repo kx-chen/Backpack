@@ -75,6 +75,6 @@ async function fetchAndSaveIcon(iconUrl, subreddit) {
     needle
       .get(iconUrl.split('?')[0])
       .pipe(fileStream)
-      .on('end', () => resolve());
+      .on('close', () => resolve());
   });
 }

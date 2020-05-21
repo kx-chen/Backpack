@@ -5,7 +5,6 @@ import { debounce } from 'debounce';
 
 import search from '../../resources/search.svg';
 import SearchResult from './SearchResult';
-import { saveNewSubreddit } from '../actions/subreddits';
 
 const getSuggestions = async value => {
   return fetch(`https://www.reddit.com/subreddits/search.json?q=${value.value}`)
