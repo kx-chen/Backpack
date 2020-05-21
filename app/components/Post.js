@@ -61,7 +61,7 @@ Post.propTypes = {
 
 function Post({ id, title, numComments, author, ups, onPostSelected }) {
   return (
-    <PostContainer onClick={() => onPostSelected(id)}>
+    <PostContainer onClick={() => onPostSelected(id)} id="post-container">
       <UpvotesContainer>{ups}</UpvotesContainer>
       <PostBodyContainer>
         <PostAuthorAndPostingDate>
