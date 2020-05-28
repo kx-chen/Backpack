@@ -68,4 +68,9 @@ All contributions, pull requests, and feedback welcome! Roasts of all kinds welc
 
 - [ ] End to End tests.
 
-And more!
+## Authors and Acknowledgement
+
+* **[Sidhya Tikku](https://sidhyatikku.com)** - *Design work*
+* **[Kai Chen](https://kaixingchen.com)** - *Programming work*
+
+See also the list of [contributors](https://github.com/kx-chen/Backpack/contributors) who participated in this project.
